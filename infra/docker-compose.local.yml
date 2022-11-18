@@ -1,0 +1,76 @@
+version: '3.4'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    volumes:
+      - data:/data/db
+    env_file:
+      - ./backend/env/postgres.env
+    networks:
+      - viewer
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+    restart: unless-stopped
+
+  pgadmin:
+    user: root
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    env_file:
+      - ./backend/env/pgadmin.env
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    ports:
+      - "5050:80"
+    networks:
+      - viewer
+    restart: unless-stopped
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend/env/.env
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - viewer
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    command: /bin/bash -c "npm run dev"
+
+  frontend:
+    container_name: "frontend"
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.local
+      target: 'develop-stage'
+    environment:
+      - VIRTUAL_HOST=staging-diagnostics-frontend.center-game.com
+    depends_on:
+      - postgres
+    ports:
+      - '9000:9000'
+    networks:
+      - viewer
+    volumes:
+      - './frontend:/app'
+    command: /bin/sh -c "yarn && QENV=development quasar dev"
+
+volumes:
+  data:
+
+
+networks:
+  viewer:
+    driver: bridge
