@@ -8,18 +8,17 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
+          @click="drawer.toggle"
         />
 
         <q-toolbar-title>
-          Документики
+          EasyNDFL by CRAB RAVE TEAM
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
+      v-model="drawer.opened"
       bordered
     >
       <q-list>
@@ -40,11 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import StepLinks from 'components/StepLinks.vue'
-const leftDrawerOpen = ref(true)
+import { useDrawerStore } from 'stores/drawer-store'
 
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
-}
+const drawer = useDrawerStore()
 </script>

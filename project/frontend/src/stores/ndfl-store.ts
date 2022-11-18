@@ -4,6 +4,7 @@ export const useNDFLStore = defineStore('ndfl', {
   state: () => ({
     lastName: '',
     firstName: '',
-    middleName: ''
+    middleName: '',
+    passport: ''
   })
 })
