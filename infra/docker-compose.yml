@@ -74,12 +74,8 @@ services:
       context: ../project/frontend/
       dockerfile: Dockerfile
       target: 'develop-stage'
-    environment:
-      - VIRTUAL_HOST=staging-diagnostics-frontend.center-game.com
-    depends_on:
-      - postgres
     ports:
-      - '8000:8000'
+      - '8000:9000'
     volumes:
       - ../project/frontend:/app
     command: /bin/sh -c "yarn && QENV=development quasar dev"
