@@ -1,35 +1,33 @@
 <template>
   <q-item
+    :key="def.key"
+    v-for="def in stepsDefinitions"
     clickable
     tag="a"
-    target="_blank"
-    :href="link"
   >
-    <q-item-section
-      v-if="icon"
-      avatar
-    >
-      <q-icon :name="icon" />
-    </q-item-section>
-
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
+      <q-item-label>{{def.index}}. {{ def.title }}</q-item-label>
+      <q-item-label caption>{{ def.caption }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
 
 <script setup lang="ts">
-interface EssentialLinkProps {
-  title: string;
-  caption?: string;
-  link?: string;
-  icon?: string;
+import { STEPS } from 'src/shared/steps/stepsMap'
+
+type StepDefinition = {
+  key: STEPS,
+  title: string,
+  caption: string,
+  index: number,
 }
 
-withDefaults(defineProps<EssentialLinkProps>(), {
-  caption: '',
-  link: '#',
-  icon: ''
-})
+const stepsDefinitions: StepDefinition[] = [
+  {
+    key: STEPS.USER_INFO,
+    index: 1,
+    title: 'ФИО',
+    caption: 'Основные данные пользователя'
+  }
+]
 </script>

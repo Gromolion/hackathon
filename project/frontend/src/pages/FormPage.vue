@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { STEPS, stepsMap } from 'components/steps/stepsMap'
+import { STEPS, stepsMap } from 'src/shared/steps/stepsMap'
 import { ref } from 'vue'
 const state = ref(STEPS.USER_INFO)
 </script>

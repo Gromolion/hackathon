@@ -3,7 +3,6 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn
-          show-if-above
           flat
           dense
           round
@@ -30,13 +29,7 @@
            Шаги заполнения формы:
         </q-item-label>
 
-        <step-links
-          caption="t"
-          icon="b"
-          link="g"
-          title="g"
-
-        />
+        <step-links />
       </q-list>
     </q-drawer>
 

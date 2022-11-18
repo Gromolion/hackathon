@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { STEPS } from 'components/steps/stepsMap'
+import { STEPS } from 'src/shared/steps/stepsMap'
 
 type isPassed = boolean;
 
