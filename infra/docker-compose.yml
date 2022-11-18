@@ -61,8 +61,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ../project/backend:/var/www/html
-      - ./app/backend/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
-
+      - ./app/backend/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.inidocker p
     environment:
       - PHP_IDE_CONFIG=serverName=Docker
     depends_on:
@@ -72,7 +71,7 @@ services:
   frontend:
     container_name: "frontend"
     build:
-      context: ./app/frontend/
+      context: ../project/frontend/
       dockerfile: Dockerfile
       target: 'develop-stage'
     environment:
@@ -80,7 +79,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - '9000:9000'
+      - '8000:8000'
     volumes:
       - ../project/frontend:/app
     command: /bin/sh -c "yarn && QENV=development quasar dev"

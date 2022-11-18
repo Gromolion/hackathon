@@ -1,10 +1,11 @@
 # develop stage
 FROM node:14-alpine as develop-stage
 WORKDIR /app
+
 COPY package*.json ./
 RUN yarn global add @quasar/cli
 COPY ./ .
-ENV BACKEND_BASE=http://localhost:3000
+ENV BACKEND_BASE=http://localhost:8080
 # build stage
 FROM develop-stage as build-stage
 RUN yarn
