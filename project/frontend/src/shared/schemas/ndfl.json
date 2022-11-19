@@ -58,13 +58,14 @@
   },
   "steps": {
     "S1": {
-      "component": "UserInfo",
       "title": "Сведения о налогоплательщике",
-      "multiple": false,
       "inputs": [
         {
-          "tooltip": "Ваше имя",
-          "inputName": "firstName",
+          "component": "SINGLE",
+          "label": " Имя",
+          "hint": "Введите ваше полное имя",
+          "tooltip": "Ваше имя может узнать в паспорте",
+          "model": "firstName",
           "type": "string",
           "validation": "stringValidation",
           "validationOptions": null,
@@ -77,8 +78,9 @@
           "validState": "Корректное имя"
         },
         {
+          "component": "SINGLE",
           "tooltip": "Ваше отчество",
-          "inputName": " middleName",
+          "model": " middleName",
           "type": "string",
           "validation": "stringValidation",
           "validationOptions": null,
@@ -91,8 +93,9 @@
           "validState": "Корректное отчество"
         },
         {
+          "component": "SINGLE",
           "tooltip": "Ваша фамилия",
-          "inputName": " lastName",
+          "model": " lastName",
           "type": "string",
           "validation": "stringValidation",
           "validationOptions": null,
@@ -105,12 +108,13 @@
           "validState": "Корректная фамилия"
         },
         {
+          "component": "SINGLE",
           "tooltip": "Код страны можно узнать по ссылке: http://www.consultant.ru/document/cons_doc_LAW_283419/a2da79b1a48d13cf4e64f78e2670d3f77c0a35e6/",
-          "inputName": " countryCode",
+          "model": " countryCode",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [3],
-          "mask": "none",
+          "mask": "###",
           "required": true,
           "title": "Код страны",
           "nullState": "",
@@ -119,8 +123,9 @@
           "validState": "Корректный код"
         },
         {
+          "component": "SINGLE",
           "tooltip": "Код категории налогоплательщика можно узнать по ссылке: https://www.nalogia.ru/articles/268-kakoy-stavit-kod-kategorii-nalogoplatelshchika-v-deklaratsii-3-ndfl.php#:~:text=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C-,%D0%A7%D1%82%D0%BE%20%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82%20%D0%BA%D0%BE%D0%B4%20%D0%BA%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%B0,%D0%9D%D0%94%D0%A4%D0%9B%20%D0%B8%20%D1%81%20%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9%20%D1%86%D0%B5%D0%BB%D1%8C%D1%8E.",
-          "inputName": " taxpayerCode",
+          "model": " taxpayerCode",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [3],
@@ -133,8 +138,9 @@
           "validState": "Корректный код"
         },
         {
+          "component": "SINGLE",
           "tooltip": "Ваша дата рождения",
-          "inputName": " birthDate",
+          "model": " birthDate",
           "type": "string",
           "validation": "dateValidation",
           "validationOptions": null,
@@ -147,8 +153,9 @@
           "validState": "Корректный код"
         },
         {
+          "component": "SINGLE",
           "tooltip": "Номер контактного телефона",
-          "inputName": " phoneNumber",
+          "model": " phoneNumber",
           "type": "string",
           "validation": "phoneValidation",
           "validationOptions": null,
@@ -169,7 +176,7 @@
       "multiple": false,
       "inputs": [{
         "tooltip": "Код документа",
-        "inputName": " passport",
+        "model": " passport",
         "type": "number",
         "validation": "numberValidation",
         "validationOptions": [2],
@@ -184,7 +191,7 @@
       },
       {
         "tooltip": "Серия и номер паспорта",
-        "inputName": " documentCode",
+        "model": " documentCode",
         "type": "string",
         "validation": "passportValidation",
         "validationOptions": null,
@@ -198,7 +205,7 @@
       },
       {
         "tooltip": "1 - налоговый резидент Российской Федерации,\n2 - лицо, не являющееся налоговым резидентом Российской Федерации",
-        "inputName": "taxpayerStatusCode",
+        "model": "taxpayerStatusCode",
         "type": "number",
         "validation": "statusValidation",
         "validationOptions": ["1,2"],
@@ -219,7 +226,7 @@
       "input": [
       {
         "tooltip": "Идентификационный номер налогоплательщика",
-        "inputName": "INN",
+        "model": "INN",
         "type": "string",
         "validation": "INNValidation",
         "validationOptions": null,
@@ -240,7 +247,7 @@
       "inputs": [
         {
           "tooltip": "1 - налогоплательщик\n2 - представитель налогоплательщика",
-          "inputName": "confirmatorStatus",
+          "model": "confirmatorStatus",
           "type": "number",
           "validation": "statusValidation",
           "validationOptions": ["1,2"],
@@ -254,7 +261,7 @@
         },
         {
           "tooltip": "Фамилия, имя, отчество* представителя налогоплательщика",
-          "inputName": "confirmatorFullName",
+          "model": "confirmatorFullName",
           "type": "string",
           "validation": "fullNameValidation",
           "validationOptions": null,
@@ -268,7 +275,7 @@
         },
         {
           "tooltip": " Текущая дата",
-          "inputName": "currentDate",
+          "model": "currentDate",
           "type": "string",
           "validation": "dateValidation",
           "validationOptions": null,
@@ -282,7 +289,7 @@
         },
         {
           "tooltip": "Паспорт, СНИЛС...",
-          "inputName": "confirmatorFullName",
+          "model": "confirmatorFullName",
           "type": "string",
           "validation": "documentValidation",
           "validationOptions": null,
@@ -303,7 +310,7 @@
       "inputs": [
         {
           "tooltip": "Узнать код можно по ссылке: https://www.nalog.gov.ru/rn77/taxation/kbk/",
-          "inputName": "classificationCode",
+          "model": "classificationCode",
           "type": "string",
           "validation": "classificationValidation",
           "validationOptions": null,
@@ -317,7 +324,7 @@
         },
         {
           "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "inputName": "OKTMOCode",
+          "model": "OKTMOCode",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [11],
@@ -331,7 +338,7 @@
         },
         {
           "tooltip": "Доходы, подлежащие налогообложению по ставке 30% x 0.3 + налог с доходов,  в  отношении  которых  в  соответствии с международным законодательством применяются особые налоговые ставки",
-          "inputName": "taxPayment",
+          "model": "taxPayment",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [14],
@@ -345,7 +352,7 @@
         },
         {
           "tooltip": "Из суммы удержанного и уплаченного авансом налога вычтите сумму доходов, подлжещих уплате в бюджет. Если получившиеся значения оказалось отрицательным или равным нулю, оставьте поле пустым",
-          "inputName": "taxReturn",
+          "model": "taxReturn",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [14],
@@ -366,7 +373,7 @@
       "inputs": [
         {
           "tooltip": "Узнать код можно по ссылке: https://www.nalog.gov.ru/rn77/taxation/kbk/",
-          "inputName": "classificationCode",
+          "model": "classificationCode",
           "type": "string",
           "validation": "classificationValidation",
           "validationOptions": null,
@@ -380,7 +387,7 @@
         },
         {
           "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "inputName": "OKTMOCodeFirstQuarter",
+          "model": "OKTMOCodeFirstQuarter",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [11],
@@ -394,7 +401,7 @@
         },
         {
           "tooltip": "Чтобы узнать авансовый платеж, который надо уплатить, вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
-          "inputName": "expensePaymentFirstQuarter",
+          "model": "expensePaymentFirstQuarter",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -408,7 +415,7 @@
         },
         {
           "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "inputName": "OKTMOCodeTwoQuarters",
+          "model": "OKTMOCodeTwoQuarters",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [11],
@@ -422,7 +429,7 @@
         },
         {
           "tooltip": "Чтобы узнать авансовый платеж, который надо уплатить, вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
-          "inputName": "expensePaymentTwoQuarters",
+          "model": "expensePaymentTwoQuarters",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -436,7 +443,7 @@
         },
         {
           "tooltip": "Сумма, которая была уплачена за предыдущий отчетный период этого года. Если такого платежа не было, оставьте поле пустым",
-          "inputName": "expenseReduceTwoQuarters",
+          "model": "expenseReduceTwoQuarters",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -450,7 +457,7 @@
         },
         {
           "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "inputName": "OKTMOCodeThreeQuarters",
+          "model": "OKTMOCodeThreeQuarters",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [11],
@@ -464,7 +471,7 @@
         },
         {
           "tooltip": "Чтобы узнать авансовый платеж, который надо уплатить, вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
-          "inputName": "expensePaymentThreeQuarters",
+          "model": "expensePaymentThreeQuarters",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -478,7 +485,7 @@
         },
         {
           "tooltip": "Сумма, которая была уплачена за предыдущий отчетный период этого года. Если такого платежа не было, оставьте поле пустым",
-          "inputName": "expenseReduceThreeQuarters",
+          "model": "expenseReduceThreeQuarters",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -492,7 +499,7 @@
         },
         {
           "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "inputName": "OKTMOCodeFullYear",
+          "model": "OKTMOCodeFullYear",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [11],
@@ -506,7 +513,7 @@
         },
         {
           "tooltip": "Чтобы узнать авансовый платеж, который надо уплатить, вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
-          "inputName": "expensePaymentFullYear",
+          "model": "expensePaymentFullYear",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -520,7 +527,7 @@
         },
         {
           "tooltip": "Сумма, которая была уплачена за предыдущий отчетный период этого года. Если такого платежа не было, оставьте поле пустым",
-          "inputName": "expenseReduceFullYear",
+          "model": "expenseReduceFullYear",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -541,7 +548,7 @@
       "inputs": [
         {
           "tooltip": "Код вида дохода можно узнать по ссылке: https://www.nalogia.ru/articles/185-kody-vida-dokhoda-v-3-ndfl.php#:~:text=%D0%9A%D0%BE%D0%B4%20%D0%B2%D0%B8%D0%B4%D0%B0%20%D0%B4%D0%BE%D1%85%D0%BE%D0%B4%D0%B0%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5,%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8)%20%D0%B4%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D0%B8%203%2D%D0%9D%D0%94%D0%A4%D0%9B.",
-          "inputName": " incomeCode",
+          "model": " incomeCode",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [3],
@@ -555,7 +562,7 @@
         },
         {
           "tooltip": "Ваши доходы за отчетный период",
-          "inputName": " incomeSum",
+          "model": " incomeSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -569,7 +576,7 @@
         },
         {
           "tooltip": "Не может быть больше 4000 за вид дохода",
-          "inputName": " noTaxedIncomeSum",
+          "model": " noTaxedIncomeSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15, 4000],
@@ -583,7 +590,7 @@
         },
         {
           "tooltip": "Сумма доходов минус сумма доходов не облагаемых налогом",
-          "inputName": "taxedIncomeSum",
+          "model": "taxedIncomeSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -597,7 +604,7 @@
         },
         {
           "tooltip": "Налоговый вычет полагается для физических лиц с годовым доходом до 350000 рублей. Список стандартных налоговых вычетов - https://www.nalog.gov.ru/rn77/taxation/taxes/ndfl/nalog_vichet/standart_nv/",
-          "inputName": "taxReturnSum",
+          "model": "taxReturnSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -611,7 +618,7 @@
         },
         {
           "tooltip": "Сумма расходов, принимаемая в уменьшение полученных доходов, определяется путем указания суммы расходов (убытков) по совокупности операций с ценными бумагами и производными финансовыми инструментами",
-          "inputName": "taxReduceSum",
+          "model": "taxReduceSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -625,7 +632,7 @@
         },
         {
           "tooltip": "Сумма, с которой рассчитывается подоходный налог",
-          "inputName": "taxBase",
+          "model": "taxBase",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -639,7 +646,7 @@
         },
         {
           "tooltip": "Сумма, с которой рассчитывается подоходный налог c ставкой 13% (если Ваш суммарный годовой доход равен или менее 5 миллионнам рублей)",
-          "inputName": "taxBaseSumSecondPoint",
+          "model": "taxBaseSumSecondPoint",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -653,7 +660,7 @@
         },
         {
           "tooltip": "Сумма, с которой рассчитывается подоходный налог c ставкой 15% (если Ваш суммарный годовой доход больше 5 миллионнам рублей)",
-          "inputName": "taxBaseSumThirdPoint",
+          "model": "taxBaseSumThirdPoint",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -667,7 +674,7 @@
         },
         {
           "tooltip": "Заполняется только в отношении кодов вида дохода с \"17\" по \"25\"",
-          "inputName": "otherTaxBases",
+          "model": "otherTaxBases",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -688,7 +695,7 @@
       "inputs": [
         {
           "tooltip": "Определяется путем умножения налоговой базы, на соответствующую налоговую ставку (в процентах)",
-          "inputName": "totalTaxSumToPay",
+          "model": "totalTaxSumToPay",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -702,7 +709,7 @@
         },
         {
           "tooltip": "Налог на доход физического лица, который был удержан с Вашего дохода.",
-          "inputName": "holdTaxesSum",
+          "model": "holdTaxesSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -716,7 +723,7 @@
         },
         {
           "tooltip": "Налог на доход физического лица по ставке 15%(если Ваш годовой доход выше 5 миллионов рублей), который был удержан с Вашего дохода.",
-          "inputName": "holdTaxesSumThirdPoint",
+          "model": "holdTaxesSumThirdPoint",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -730,7 +737,7 @@
         },
         {
           "tooltip": "Особые случаи (например, выгода полученная с заемных средств)",
-          "inputName": "holdTaxesSumMaterial",
+          "model": "holdTaxesSumMaterial",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -744,7 +751,7 @@
         },
         {
           "tooltip": "Сумма уплаченная по торговому сбору, которая зачитывается для уменьшения налоговой базы.",
-          "inputName": "payedSalesTax",
+          "model": "payedSalesTax",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -758,7 +765,7 @@
         },
         {
           "tooltip": "Заполняют иностранные граждане, осуществляющие трудовую деятельность по найму у физических лиц для личных, домашних и иных подобных нужд, не связанных с осуществлением предпринимательской деятельности",
-          "inputName": "fixedExpenseSum",
+          "model": "fixedExpenseSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -772,7 +779,7 @@
         },
         {
           "tooltip": "Сумма налога, уплаченная в иностранных государствах и подлежащая зачету",
-          "inputName": "foreignTaxes",
+          "model": "foreignTaxes",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -786,7 +793,7 @@
         },
         {
           "tooltip": "Данная сумма не должна быть больше суммы налога, исчисленная к уплате",
-          "inputName": "patentTaxes",
+          "model": "patentTaxes",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -800,7 +807,7 @@
         },
         {
           "tooltip": "Общая сумма уплаты в бюджет. Исчисляется вычетом суммы подлежащей возврату из суммы, исчисленной к уплате",
-          "inputName": "totalTaxSumToPayInBudget",
+          "model": "totalTaxSumToPayInBudget",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],
@@ -814,7 +821,7 @@
         },
         {
           "tooltip": "Общая сумма к возврату из бюджета",
-          "inputName": "totalTaxReturnSum",
+          "model": "totalTaxReturnSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [13],

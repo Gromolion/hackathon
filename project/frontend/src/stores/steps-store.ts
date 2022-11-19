@@ -1,28 +1,35 @@
 import { defineStore } from 'pinia'
-import { STEPS, stepsDefinitions } from 'src/shared/steps/stepsMap'
+import { StepDefinition, StepsSchema } from 'src/shared/schemas'
 
-type isPassed = boolean;
+export interface StepsStoreState {
+  schema: StepsSchema,
+  passed: {
+    [key: keyof StepsSchema]: true,
+  },
+  selected: StepDefinition,
+}
 
-export type PassedStepsMap = {
-  [key in STEPS]: isPassed
-} & {selected: STEPS}
-
-const getSteps = (): PassedStepsMap => ({
-  [STEPS.USER_INFO]: false,
-  [STEPS.PASSPORT]: false,
-  selected: stepsDefinitions[0].key
+const getSteps = ():StepsStoreState => ({
+  schema: {},
+  passed: {},
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  selected: null
 })
 
 export const useStepsStore = defineStore('steps', {
   state: getSteps,
   getters: {
-    isAllowed: (state) => (step: STEPS) => state[step]
+    isAllowed: (state) => (key: string) => state.passed[key]
   },
   actions: {
-    confirm (step: STEPS) {
-      this[step] = true
+    init (schema: StepsSchema) {
+      this.select(schema.S1)
     },
-    select (step: STEPS) {
+    confirm (step?: StepDefinition) {
+      this.passed[step?.key ? step.key : this.selected.key] = true
+    },
+    select (step: StepDefinition) {
       this.selected = step
     }
   }

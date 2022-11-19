@@ -8,12 +8,12 @@
 </template>
 
 <script setup lang="ts">
-import { useNDFLStore } from 'stores/ndfl-store'
+import { useDocumentStore } from 'stores/document-store'
 import { useStepsStore } from 'stores/steps-store'
 import { STEPS } from 'src/shared/steps/stepsMap'
 import { useDrawerStore } from 'stores/drawer-store'
 
-const ndfl = useNDFLStore()
+const ndfl = useDocumentStore()
 const steps = useStepsStore()
 const drawer = useDrawerStore()
 const passStep = () => {

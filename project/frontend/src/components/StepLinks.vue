@@ -17,7 +17,6 @@
 
 <script setup lang="ts">
 import { useStepsStore } from 'stores/steps-store'
-import { stepsDefinitions } from 'src/shared/steps/stepsMap'
 
 const steps = useStepsStore()
 </script>
