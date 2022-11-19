@@ -9,6 +9,10 @@
 <script setup lang="ts">
 import { stepsMap } from 'src/shared/steps/stepsMap'
 import { useStepsStore } from 'stores/steps-store'
-
+import { testEmitter } from 'src/services'
+import { onMounted } from 'vue'
+onMounted(() => {
+  testEmitter.emit('test', 'hui')
+})
 const steps = useStepsStore()
 </script>
