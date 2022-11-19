@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import emitter from 'src/shared/emitter'
 
 const getSteps = () => ({
   schema: {

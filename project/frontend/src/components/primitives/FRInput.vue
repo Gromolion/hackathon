@@ -1,5 +1,6 @@
 <template>
   <q-input
+    ref="inputRef"
     bottom-slots
     class="q-mb-md"
     v-bind="omit(['hint'], props)"
@@ -47,9 +48,18 @@
 
 <script setup>
 import { omit } from 'ramda'
-import { computed } from 'vue'
+import emitter from 'src/shared/emitter'
+import { computed, ref } from 'vue'
 
 const emit = defineEmits(['update:modelValue']);
+
+const inputRef = ref(null)
+
+emitter.on('answer', () => {
+  if (inputRef.value) {
+    inputRef.value.validate()
+  }
+})
 
 const props = defineProps({
   label: String,

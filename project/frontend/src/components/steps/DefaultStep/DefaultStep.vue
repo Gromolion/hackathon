@@ -6,15 +6,20 @@
       <StepInputGroup v-else-if="element.type === 'MULTIPLE'" v-bind="element.payload" />
       <StepInput v-else v-bind="element.payload"/>
     </template>
-    <q-btn label="Далее" type="submit"/>
+    <q-btn @click="touch" label="Далее" type="submit"/>
   </q-form>
 </template>
 
 <script setup>
+import emitter from 'src/shared/emitter'
 import { useStepsStore } from 'src/stores/steps-store'
 import StepInput from 'components/steps/DefaultStep/StepInput.vue'
 import StepInputGroup from 'components/steps/DefaultStep/StepInputGroup.vue'
 import StepGroup from 'components/steps/DefaultStep/StepGroup.vue'
+
+const touch = () => {
+  emitter.emit('answer')
+}
 
 const steps = useStepsStore()
 </script>
