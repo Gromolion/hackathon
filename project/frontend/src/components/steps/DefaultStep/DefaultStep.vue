@@ -1,6 +1,6 @@
 <template>
   <q-form>
-    <p v-if="steps.selected.title">{{steps.selected.title}}</p>
+    <h6 v-if="steps.selected.title">{{steps.selected.title}}</h6>
     <template :key="i" v-for="(element, i) in steps.selected.elements">
       <StepGroup v-if="element.type === 'GROUP'" v-bind="element.payload" />
       <StepInputGroup v-else-if="element.type === 'MULTIPLE'" v-bind="element.payload" />

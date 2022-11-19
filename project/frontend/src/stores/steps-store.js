@@ -21,7 +21,7 @@ export const useStepsStore = defineStore('steps', {
           .entries(schema)
           .map(([key, step]) => [key, {key, ...step}])
       )
-      this.select("S1")
+      this.select("TITLE")
     },
     select (stepKey) {
       this.selected = this.schema[stepKey]
@@ -39,6 +39,9 @@ export const useStepsStore = defineStore('steps', {
     },
     next() {
       this.select(this.selected.next)
+    },
+    prompt(answer) {
+
     },
   }
 })
