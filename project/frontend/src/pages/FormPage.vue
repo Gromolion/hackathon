@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <q-card align="center" class="col-12 col-xl-2 col-lg-4 col-md-4 col-sm-6 q-px-lg q-py-md">
+    <q-card align="center" class="col-12 col-xl-2 col-lg-6 col-md-6 col-sm-8 q-px-lg q-py-md">
       <template v-if="steps.selected">
         <InfoStep v-if="steps.selected.type === 'INFO'" />
         <BranchStep v-else-if="steps.selected.type === 'BRANCH'" />

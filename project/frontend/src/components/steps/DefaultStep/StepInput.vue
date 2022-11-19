@@ -1,38 +1,10 @@
 <template>
-  <q-input
-    bottom-slots
-    class="q-mb-md"
-    v-bind="omit(['hint'], props)"
-    :stack-label="stackLabel || type === 'date'"
-    v-model="document.model[model]"
-  >
-    <template v-slot:hint v-if="hint">
-        <div class="q-field__messages row items-center">
-          <div>
-            {{hint}}
-          </div>
-          <q-icon class="q-pl-xs" name="help" size="xs" v-if="tooltip">
-            <q-tooltip>
-              {{tooltip}}
-            </q-tooltip>
-          </q-icon>
-        </div>
-    </template>
-    <template #after v-if="externalLink">
-      <q-icon size="xs" tag="div" name="open_in_new" @click="open">
-        <q-tooltip>
-          {{externalLink}}
-        </q-tooltip>
-      </q-icon>
-    </template>
-  </q-input>
+  <FRInput v-bind="props" v-model="document.model[model]"/>
 </template>
 
 <script setup>
-import { omit } from 'ramda'
-import { useDocumentStore } from 'src/stores/document-store'
-
-const document = useDocumentStore()
+import FRInput from 'components/primitives/FRInput.vue'
+import { useDocumentStore } from 'stores/document-store'
 
 const props = defineProps({
   label: String,
@@ -47,8 +19,5 @@ const props = defineProps({
   stackLabel: Boolean,
 })
 
-const open = () => {
-  if (!props.externalLinkURL) return;
-  window.open(props.externalLinkURL, '_blank')
-}
+const document = useDocumentStore()
 </script>

@@ -1,13 +1,13 @@
 <template>
-  <q-form>
+  <q-form @submit.prevent.stop="steps.next">
     <h6 v-if="steps.selected.title">{{steps.selected.title}}</h6>
     <template :key="i" v-for="(element, i) in steps.selected.elements">
       <StepGroup v-if="element.type === 'GROUP'" v-bind="element.payload" />
       <StepInputGroup v-else-if="element.type === 'MULTIPLE'" v-bind="element.payload" />
       <StepInput v-else v-bind="element.payload"/>
     </template>
+    <q-btn label="Далее" type="submit"/>
   </q-form>
-  <q-btn @click="steps.next">Далее</q-btn>
 </template>
 
 <script setup>
