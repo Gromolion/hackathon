@@ -39,6 +39,7 @@
                     <TableCell HorzAlign="Center" ColSpan="1" RowSpan="1" Name="Cell43" Text="Сумма"
                                Padding="2, 0, 2, 0" Font="Tahoma, 10pt, style=Bold"/>
                 </TableRow>
+                <!-- todo foreach -->
                 <TableRow MaxHeight="500" MinHeight="0" Height="15.75" Name="Row2">
                     <TableCell ColSpan="1" RowSpan="1" Name="Cell4" Padding="2, 0, 2, 0" Font="Tahoma, 10pt"/>
                     <TableCell ColSpan="1" RowSpan="1" Name="Cell5" Padding="2, 0, 2, 0" Font="Tahoma, 10pt"/>
@@ -51,6 +52,7 @@
                     <TableCell HorzAlign="Right" ColSpan="1" RowSpan="1" Name="Cell44" Padding="2, 0, 2, 0"
                                Font="Tahoma, 10pt"/>
                 </TableRow>
+                <!-- todo endforeach -->
             </TableObject>
             <TextObject VertAlign="Center" Top="283.50" Left="529.20" Name="Text11" Text="Итого:" Width="58.94"
                         Height="25.25" Padding="2, 0, 2, 0" Font="Tahoma, 9pt, style=Bold"/>
