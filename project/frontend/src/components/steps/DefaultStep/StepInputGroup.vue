@@ -7,13 +7,12 @@
   </template>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref, watch } from 'vue'
-import { useDocumentStore } from 'stores/document-store'
+import { useDocumentStore } from 'src/stores/document-store'
 import { clone } from 'ramda'
-import { InputDefinition } from 'src/shared/schemas'
 
-const props = defineProps<InputDefinition>()
+const props = defineProps()
 
 const limit = ref(props.min)
 

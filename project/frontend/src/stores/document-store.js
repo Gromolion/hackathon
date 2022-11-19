@@ -1,13 +1,12 @@
 import { defineStore } from 'pinia'
-import { MutableModel } from 'src/shared/schemas'
 import { clone } from 'ramda'
 
 export const useDocumentStore = defineStore('documentModel', {
   state: () => ({
-    model: {} as {[key: string]: any}
+    model: {}
   }),
   actions: {
-    init (model: MutableModel) {
+    init (model) {
       this.model = clone(model)
     }
   }

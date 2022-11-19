@@ -15,8 +15,8 @@
 
 </template>
 
-<script setup lang="ts">
-import { useStepsStore } from 'stores/steps-store'
+<script setup>
+import { useStepsStore } from 'src/stores/steps-store'
 
 const steps = useStepsStore()
 </script>

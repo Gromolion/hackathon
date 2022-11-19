@@ -3,10 +3,10 @@
     "firstName": "",
     "middleName": "",
     "lastName": "",
-    "countryCode": 0,
-    "taxpayerCode": 0,
+    "countryCode": 643,
+    "taxpayerCode": 720,
     "birthDate": "",
-    "phoneNumber": 0,
+    "phoneNumber": "",
     "documentCode": 0,
     "passport": "",
     "taxpayerStatusCode": 0,
@@ -59,114 +59,63 @@
   "steps": {
     "S1": {
       "title": "Сведения о налогоплательщике",
-      "inputs": [
+      "elements": [
         {
-          "component": "SINGLE",
-          "label": " Имя",
-          "hint": "Введите ваше полное имя",
-          "tooltip": "Ваше имя может узнать в паспорте",
-          "model": "firstName",
-          "type": "string",
-          "validation": "stringValidation",
-          "validationOptions": null,
-          "mask": "none",
-          "required": true,
-          "title": "Имя",
-          "nullState": "",
-          "placeholder": "Имя",
-          "invalidState": "Некорректное имя",
-          "validState": "Корректное имя"
+          "payload": {
+            "label": "Имя",
+            "model": "firstName"
+          }
         },
         {
-          "component": "SINGLE",
-          "tooltip": "Ваше отчество",
-          "model": " middleName",
-          "type": "string",
-          "validation": "stringValidation",
-          "validationOptions": null,
-          "mask": "none",
-          "required": true,
-          "title": "Отчество",
-          "nullState": "",
-          "placeholder": "Отчество",
-          "invalidState": "Некорректное отчество",
-          "validState": "Корректное отчество"
+          "payload": {
+            "label": "Отчество",
+            "model": "middleName",
+            "hint": "Можно пропустить, если отчества нет"
+          }
         },
         {
-          "component": "SINGLE",
-          "tooltip": "Ваша фамилия",
-          "model": " lastName",
-          "type": "string",
-          "validation": "stringValidation",
-          "validationOptions": null,
-          "mask": "none",
-          "required": true,
-          "title": "Фамилия",
-          "nullState": "",
-          "placeholder": "Фамилия",
-          "invalidState": "Некорректная фамилия",
-          "validState": "Корректная фамилия"
+          "payload": {
+            "label": "Фамилия",
+            "model": "lastName"
+          }
         },
         {
-          "component": "SINGLE",
-          "tooltip": "Код страны можно узнать по ссылке: http://www.consultant.ru/document/cons_doc_LAW_283419/a2da79b1a48d13cf4e64f78e2670d3f77c0a35e6/",
-          "model": " countryCode",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [3],
-          "mask": "###",
-          "required": true,
-          "title": "Код страны",
-          "nullState": "",
-          "placeholder": "000",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
+          "payload": {
+            "label": "Дата рождения",
+            "model": "birthDate",
+            "type": "date"
+          }
         },
         {
-          "component": "SINGLE",
-          "tooltip": "Код категории налогоплательщика можно узнать по ссылке: https://www.nalogia.ru/articles/268-kakoy-stavit-kod-kategorii-nalogoplatelshchika-v-deklaratsii-3-ndfl.php#:~:text=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C-,%D0%A7%D1%82%D0%BE%20%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82%20%D0%BA%D0%BE%D0%B4%20%D0%BA%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%B0,%D0%9D%D0%94%D0%A4%D0%9B%20%D0%B8%20%D1%81%20%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9%20%D1%86%D0%B5%D0%BB%D1%8C%D1%8E.",
-          "model": " taxpayerCode",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [3],
-          "mask": "none",
-          "required": true,
-          "title": "Код категории налогоплательщика",
-          "nullState": "",
-          "placeholder": "000",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
+          "payload":  {
+            "label": "Номер контактного телефона",
+            "model": "phoneNumber",
+            "mask": "+# (###) ###-##-##"
+          }
         },
         {
-          "component": "SINGLE",
-          "tooltip": "Ваша дата рождения",
-          "model": " birthDate",
-          "type": "string",
-          "validation": "dateValidation",
-          "validationOptions": null,
-          "mask": "date",
-          "required": true,
-          "title": "Дата рождения",
-          "nullState": "",
-          "placeholder": "00-00-00",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
+          "payload": {
+            "externalLink": "Список кодов стран",
+            "externalLinkURL": "http://www.consultant.ru/document/cons_doc_LAW_283419/a2da79b1a48d13cf4e64f78e2670d3f77c0a35e6/",
+            "model": "countryCode",
+            "type": "number",
+            "mask": "###",
+            "label": "Код страны налогоплательщика",
+            "placeholder": "000",
+            "hint": "Укажите 643, если вы гражданин РФ"
+          }
         },
         {
-          "component": "SINGLE",
-          "tooltip": "Номер контактного телефона",
-          "model": " phoneNumber",
-          "type": "string",
-          "validation": "phoneValidation",
-          "validationOptions": null,
-          "mask": "phone",
-          "required": true,
-          "optional": "false",
-          "title": "Номер контактного телефона",
-          "nullState": "",
-          "placeholder": "+70000000000",
-          "invalidState": "Некорректный телефон",
-          "validState": "Корректный телефон"
+          "payload": {
+            "externalLink": "Как указать код категории налогоплательщика?",
+            "externalLinkURL": "https://www.nalogia.ru/articles/268-kakoy-stavit-kod-kategorii-nalogoplatelshchika-v-deklaratsii-3-ndfl.php#:~:text=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C-,%D0%A7%D1%82%D0%BE%20%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82%20%D0%BA%D0%BE%D0%B4%20%D0%BA%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%B0,%D0%9D%D0%94%D0%A4%D0%9B%20%D0%B8%20%D1%81%20%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9%20%D1%86%D0%B5%D0%BB%D1%8C%D1%8E",
+            "model": "taxpayerCode",
+            "type": "number",
+            "mask": "###",
+            "label": "Код категории налогоплательщика",
+            "placeholder": "000",
+            "hint": "770 для фермеров, 720 для ИП"
+          }
         }
       ]
     },
@@ -176,7 +125,7 @@
       "multiple": false,
       "inputs": [{
         "tooltip": "Код документа",
-        "model": " passport",
+        "model": "passport",
         "type": "number",
         "validation": "numberValidation",
         "validationOptions": [2],
@@ -191,7 +140,7 @@
       },
       {
         "tooltip": "Серия и номер паспорта",
-        "model": " documentCode",
+        "model": "documentCode",
         "type": "string",
         "validation": "passportValidation",
         "validationOptions": null,
@@ -274,7 +223,7 @@
           "validState": "Корректный данные"
         },
         {
-          "tooltip": " Текущая дата",
+          "tooltip": "Текущая дата",
           "model": "currentDate",
           "type": "string",
           "validation": "dateValidation",
@@ -548,7 +497,7 @@
       "inputs": [
         {
           "tooltip": "Код вида дохода можно узнать по ссылке: https://www.nalogia.ru/articles/185-kody-vida-dokhoda-v-3-ndfl.php#:~:text=%D0%9A%D0%BE%D0%B4%20%D0%B2%D0%B8%D0%B4%D0%B0%20%D0%B4%D0%BE%D1%85%D0%BE%D0%B4%D0%B0%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5,%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8)%20%D0%B4%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D0%B8%203%2D%D0%9D%D0%94%D0%A4%D0%9B.",
-          "model": " incomeCode",
+          "model": "incomeCode",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [3],
@@ -562,7 +511,7 @@
         },
         {
           "tooltip": "Ваши доходы за отчетный период",
-          "model": " incomeSum",
+          "model": "incomeSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15],
@@ -576,7 +525,7 @@
         },
         {
           "tooltip": "Не может быть больше 4000 за вид дохода",
-          "model": " noTaxedIncomeSum",
+          "model": "noTaxedIncomeSum",
           "type": "number",
           "validation": "numberValidation",
           "validationOptions": [15, 4000],

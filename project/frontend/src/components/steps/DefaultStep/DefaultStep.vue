@@ -1,14 +1,14 @@
 <template>
-  <template :key="element.model" v-for="element in steps.selected.elements">
-    <StepGroup v-if="element.component === 'GROUP'" v-bind="element" />
-    <StepInputGroup v-else-if="element.multiple" v-bind="element" />
-    <StepInput v-else v-bind="element"/>
+  <template :key="i" v-for="(element, i) in steps.selected.elements">
+    <StepGroup v-if="element.type === 'GROUP'" v-bind="element.payload" />
+    <StepInputGroup v-else-if="element.type === 'MULTIPLE'" v-bind="element.payload" />
+    <StepInput v-else v-bind="element.payload"/>
   </template>
   <q-btn @click="steps.confirm">Далее</q-btn>
 </template>
 
-<script setup lang="ts">
-import { useStepsStore } from 'stores/steps-store'
+<script setup>
+import { useStepsStore } from 'src/stores/steps-store'
 import StepInput from 'components/steps/DefaultStep/StepInput.vue'
 import StepInputGroup from 'components/steps/DefaultStep/StepInputGroup.vue'
 import StepGroup from 'components/steps/DefaultStep/StepGroup.vue'

@@ -1,4 +1,3 @@
-import ndfl from './ndfl.json'
 
 export type MutableModel = {
   [key: string]: any
@@ -65,8 +64,3 @@ export interface DocumentSchemas {
   [key: string]: DocumentSchema
 }
 
-export const schemas: DocumentSchemas = {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  ndfl
-}

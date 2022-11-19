@@ -1,17 +1,39 @@
 <template>
-    <q-input
-      v-model="document.model[props.model]"
-      v-bind="props"
-  />
+  <q-input
+    class="q-mb-md"
+    v-bind="props"
+    :stack-label="stackLabel || type === 'date'"
+    v-model="document.model[model]"
+  >
+    <template #after v-if="externalLink">
+      <q-icon size="xs" tag="div" name="open_in_new" @click="open">
+        <q-tooltip>
+          {{externalLink}}
+        </q-tooltip>
+      </q-icon>
+    </template>
+  </q-input>
 </template>
 
-<script setup lang="ts">
-import { GroupDefinition, InputDefinition } from 'src/shared/schemas'
-import { useDocumentStore } from 'stores/document-store'
-import { ref, watch } from 'vue'
-import { clone } from 'ramda'
+<script setup>
+import { useDocumentStore } from 'src/stores/document-store'
 
 const document = useDocumentStore()
 
-const props = defineProps<InputDefinition>()
+const props = defineProps({
+  label: String,
+  hint: String,
+  externalLink: String,
+  externalLinkURL: String,
+  model: String,
+  type: String,
+  mask: String,
+  placeholder: String,
+  stackLabel: Boolean,
+})
+
+const open = () => {
+  if (!props.externalLinkURL) return;
+  window.open(props.externalLinkURL, '_blank')
+}
 </script>

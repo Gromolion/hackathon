@@ -38,9 +38,9 @@
   </q-layout>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import StepLinks from 'components/StepLinks.vue'
-import { useDrawerStore } from 'stores/drawer-store'
+import { useDrawerStore } from 'src/stores/drawer-store'
 
 const drawer = useDrawerStore()
 </script>
