@@ -290,7 +290,8 @@
                         Width="321.30" Height="38.35" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $presentTaxpayerLastName = mb_str_split((string)$formData['presentTaxpayerLastName'])
+                $presentLastName = $formData['presentTaxpayerLastName'] ?? $formData['lastName'];
+                $presentTaxpayerLastName = mb_str_split((string)$presentLastName)
             @endphp
             @for($i = 37.80, $j = 0; $j <= 15; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" HorzAlign="Center" Top="567.00" Left="{{$i}}" Border.Color="#000000"
@@ -299,7 +300,9 @@
             @endfor
 
             @php
-                $presentTaxpayerName = mb_str_split((string)$formData['presentTaxpayerName'])
+                $presentName = $formData['presentTaxpayerName'] ?? $formData['name'];
+
+                $presentTaxpayerName = mb_str_split((string)$presentName)
             @endphp
 
             @for($i = 37.80, $j = 0; $j <= 15; $i += 18.9, $j++)
@@ -310,7 +313,9 @@
             @endfor
 
             @php
-                $presentTaxpayerPatronymic = mb_str_split((string)$formData['presentTaxpayerPatronymic'])
+                $presentPatronymic = $formData['presentTaxpayerPatronymic'] ?? $formData['patronymic'];
+
+                $presentTaxpayerPatronymic = mb_str_split((string)$presentPatronymic)
             @endphp
 
             @for($i = 37.80, $j = 0; $j <= 15; $i += 18.9, $j++)
