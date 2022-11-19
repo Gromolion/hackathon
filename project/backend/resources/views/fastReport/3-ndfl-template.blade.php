@@ -627,7 +627,6 @@
                         Width="38.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             <TextObject HorzAlign="Center" VertAlign="Center" Top="170.10" Left="519.75" Name="Text617" Text="3"
                         Width="38.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
-            <!-- todo foreach -->
 
             @php
                 $codeBudgetClassification020 = mb_str_split((string)$formData['codeBudgetClassification020']);

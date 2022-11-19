@@ -1,6 +1,7 @@
 <?php
 
-use App\Services\KladrLocationService;
+use App\Services\FastReportService;
+//use App\Services\KladrLocationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,12 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/get-file', function (Request $request, FastReportService $service) {
     $json = json_decode($request->getContent(), true);
     $service->setDocType($json['docType']);
-    $service->setFormData($json['formData']);
-    $service->setFormat($json['format']);
-    $service->setFileName($json['fileName']);
 
-    $service->getFileContent();
-Route::get('/get-ndfl', function () {
     $formData = [
         'INN' => '614408168401',
         'correctionNumber' => '123',
@@ -60,9 +56,13 @@ Route::get('/get-ndfl', function () {
         "sumAdvancedPayedYear160" => "1234567890112",
         "sumAdvancedDecreaseYear170" => "1234567890112",
     ];
-    dd(base64_encode('<?xml version="1.0" encoding="utf-8"?>' . view('fastReport.3-ndfl-template', compact('formData'))->render()));
-});
 
+    $service->setFormData($formData);
+    $service->setFormat($json['format']);
+    $service->setFileName($json['fileName']);
+
+    $service->getFileContent();
+});
 Route::get('/test', function (\App\Services\InnService $innService) {
     $params = [
         'fam' => 'Смирнов',
