@@ -21,7 +21,6 @@ const document = useDocumentStore()
 
 onMounted(() => {
   const route = useRoute()
-  console.log(route.params.document)
   const schema = schemas[route.params.document]
   if (!schema) return
   steps.init(schema.steps)

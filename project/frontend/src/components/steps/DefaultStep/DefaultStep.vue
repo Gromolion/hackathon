@@ -1,10 +1,13 @@
 <template>
-  <template :key="i" v-for="(element, i) in steps.selected.elements">
-    <StepGroup v-if="element.type === 'GROUP'" v-bind="element.payload" />
-    <StepInputGroup v-else-if="element.type === 'MULTIPLE'" v-bind="element.payload" />
-    <StepInput v-else v-bind="element.payload"/>
-  </template>
-  <q-btn @click="steps.confirm">Далее</q-btn>
+  <q-form>
+    <p v-if="steps.selected.title">{{steps.selected.title}}</p>
+    <template :key="i" v-for="(element, i) in steps.selected.elements">
+      <StepGroup v-if="element.type === 'GROUP'" v-bind="element.payload" />
+      <StepInputGroup v-else-if="element.type === 'MULTIPLE'" v-bind="element.payload" />
+      <StepInput v-else v-bind="element.payload"/>
+    </template>
+  </q-form>
+  <q-btn @click="steps.next">Далее</q-btn>
 </template>
 
 <script setup>

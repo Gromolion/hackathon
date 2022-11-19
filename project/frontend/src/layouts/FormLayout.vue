@@ -41,6 +41,14 @@
 <script setup>
 import StepLinks from 'components/StepLinks.vue'
 import { useDrawerStore } from 'src/stores/drawer-store'
+import { useStepsStore } from 'stores/steps-store'
+import { watch } from 'vue'
 
 const drawer = useDrawerStore()
+const steps = useStepsStore()
+
+watch(steps, () => {
+  if (steps.confirmedCount !== 2) return;
+  drawer.open()
+})
 </script>

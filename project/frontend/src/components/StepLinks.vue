@@ -1,14 +1,13 @@
 <template>
-  <template :key="def.key" v-for="def in stepsDefinitions">
+  <template :key="step.key" v-for="(step, i) in Object.values(steps.passed)">
     <q-item
-      v-if="steps.isAllowed(def.key)"
+      v-if="step.passed"
       clickable
-      @click="steps.select(def.key)"
+      @click="steps.select(step.key)"
       tag="a"
     >
       <q-item-section>
-        <q-item-label>{{def.index}}. {{ def.title }}</q-item-label>
-        <q-item-label caption>{{ def.caption }}</q-item-label>
+        <q-item-label>{{i+1}}. {{ step.title }}</q-item-label>
       </q-item-section>
     </q-item>
   </template>
