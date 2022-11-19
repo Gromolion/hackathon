@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\FastReportService;
 use App\Services\KladrLocationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,8 +15,14 @@ Route::get('/location', function (Request $request, KladrLocationService $servic
     return var_dump(json_decode($service->getLocation()));
 });
 
-Route::get('/get-ndfl', function () {
-    dd( '<?xml version="1.0" encoding="utf-8"?>' . view('fastReport.3-ndfl-template')->render());
+Route::post('/get-file', function (Request $request, FastReportService $service) {
+    $json = json_decode($request->getContent(), true);
+    $service->setDocType($json['docType']);
+    $service->setFormData($json['formData']);
+    $service->setFormat($json['format']);
+    $service->setFileName($json['fileName']);
+
+    $service->getFileContent();
 });
 
 
