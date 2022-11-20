@@ -1,4 +1,9 @@
-<Report ReportInfo.Created="{{date('d/m/Y h:i:s')}}" ReportInfo.Modified="{{date('d/m/Y h:i:s')}}"
+@php
+/**
+ * @var $formData array
+ */
+@endphp
+    <Report ReportInfo.Created="{{date('d/m/Y h:i:s')}}" ReportInfo.Modified="{{date('d/m/Y h:i:s')}}"
         ReportInfo.CreatorVersion="1.0.0.0" Name="Report">
     <Dictionary/>
     <ReportPage Watermark.Font="Arial, 60pt" Name="Page1">
@@ -6,11 +11,11 @@
             <TextObject VertAlign="Center" HorzAlign="Center" Top="18.90" Left="151.20" Name="Text1" Text="ИНН"
                         Width="47.25" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             @php
-                $inn = mb_str_split((string)$formData['INN'])
+                $inn = mb_str_split((string)($formData['INN'] ?? ''))
             @endphp
             @for($i = 198.45, $j = 0; $j <= 11; $i += 18.9, $j++)
             <TextObject Border.Lines="All" Border.Style="Dot" Border.Color="#000000" Left="{{$i}}" Top="18.90"
-                        HorzAlign="Center" VertAlign="Center" Name="{{'inn'.$j}}" Text="{{$inn[$j]}}" Width="19.45" Height="19.45"
+                        HorzAlign="Center" VertAlign="Center" Name="{{'inn'.$j}}" Text="{{$inn[$j] ?? '-'}}" Width="19.45" Height="19.45"
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 8pt"/>
             @endfor
             <TextObject Left="349.65" Top="56.70" HorzAlign="Center" VertAlign="Center" Name="Text192" Text="Стр."
@@ -33,7 +38,7 @@
                         Text="Номер&#13;&#13;&#13;&#13;&#13;&#13;&#13;&#10;корректировки" Width="75.60" Height="19.45"
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             @php
-                $correctionNumber = mb_str_split((string)$formData['correctionNumber'])
+                $correctionNumber = mb_str_split((string)($formData['correctionNumber'] ?? ''))
             @endphp
             @for($i = 113.40, $j = 0; $j <= 2; $i += 18.9, $j++)
             <TextObject Border.Lines="All" Border.Style="Dot" Border.Color="#000000" Left="{{$i}}" Top="122.85"
@@ -41,7 +46,7 @@
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 8pt"/>
             @endfor
             @php
-                $taxPeriodCode = mb_str_split((string)$formData['taxPeriodCode'])
+                $taxPeriodCode = mb_str_split((string)($formData['taxPeriodCode'] ?? ''))
             @endphp
             @for($i = 255.17, $j = 0; $j <= 1; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" HorzAlign="Center" Top="122.85" Left="{{$i}}" Border.Color="#000000"
@@ -53,7 +58,7 @@
                         Text="Налоговый&#13;&#13;&#13;&#13;&#13;&#13;&#13;&#10;период (код)" Width="66.15"
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             @php
-                $reportingYear = mb_str_split((string)$formData['reportingYear'])
+                $reportingYear = mb_str_split((string)($formData['reportingYear'] ?? ''))
             @endphp
             @for($i = 387.45, $j = 0; $j <= 3; $i += 18.9, $j++)
                 <TextObject Border.Lines="All" Border.Style="Dot" Border.Color="#000000" Left="{{$i}}" Top="122.85"
@@ -68,7 +73,7 @@
                         Text="Предоставляется в &#13;&#13;&#13;&#13;&#13;&#13;&#13;&#10;налоговый орган (код)"
                         Width="113.675" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             @php
-                $providedToTheTaxCode = mb_str_split((string)$formData['providedToTheTaxCode'])
+                $providedToTheTaxCode = mb_str_split((string)($formData['providedToTheTaxCode'] ?? ''))
             @endphp
             @for($i = 604.81, $j = 0; $j <= 3; $i += 18.89, $j++)
                 <TextObject VertAlign="Center" HorzAlign="Center" Top="122.85" Left="{{$i}}" Border.Color="#000000"
@@ -79,7 +84,7 @@
                         Text="Сведения о налогоплательщике" Width="198.45" Height="10" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 7pt, style=Bold"/>
             @php
-                $countryCode = mb_str_split((string)$formData['countryCode'])
+                $countryCode = mb_str_split((string)($formData['countryCode'] ?? ''))
             @endphp
             @for($i = 113.41, $j = 0; $j <= 2; $i += 18.89, $j++)
                 <TextObject VertAlign="Center" HorzAlign="Center" Top="170.11" Left="{{$i}}" Border.Color="#000000"
@@ -92,7 +97,7 @@
             <TextObject Left="189" Top="170.11" VertAlign="Center" Name="Text225" Text="Код категории налогоплательщика"
                         Width="160.65" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             @php
-                $codeCategoryTaxpayer = mb_str_split((string)$formData['codeCategoryTaxpayer'])
+                $codeCategoryTaxpayer = mb_str_split((string)($formData['codeCategoryTaxpayer'] ?? ''))
             @endphp
             @for($i = 368.56, $j = 0; $j <= 2; $i += 18.89, $j++)
                 <TextObject Border.Lines="All" Border.Style="Dot" Border.Color="#000000" Left="{{$i}}" Top="170.11"
@@ -104,7 +109,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $lastName = mb_str_split((string)$formData['lastName'])
+                $lastName = mb_str_split((string)($formData['lastName'] ?? ''))
             @endphp
             @for($i = 113.41, $j = 0; $j <= 29; $i += 18.89, $j++)
                 <TextObject VertAlign="Center" HorzAlign="Center" Top="198.45" Left="{{$i}}" Border.Color="#000000"
@@ -116,7 +121,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $name = mb_str_split((string)$formData['name']);
+                $name = mb_str_split((string)($formData['name'] ?? ''));
             @endphp
             @for($i = 113.41, $j = 0; $j <= 29; $i += 18.89, $j++)
                 <TextObject VertAlign="Center" HorzAlign="Center" Top="226.80" Left="{{$i}}" Border.Color="#000000"
@@ -128,7 +133,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $patronymic = mb_str_split((string)$formData['patronymic'])
+                $patronymic = mb_str_split((string)($formData['patronymic'] ?? ''))
             @endphp
             @for($i = 113.41, $j = 0; $j <= 29; $i += 18.89, $j++)
                 <TextObject VertAlign="Center" HorzAlign="Center" Top="255.15" Left="{{$i}}" Border.Color="#000000"
@@ -139,7 +144,7 @@
             <TextObject VertAlign="Center" Top="283.52" Left="37.80" Name="Text334" Text="Дата рождения" Width="75.60"
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             @php
-                $date = strtotime((string)$formData['birthday']);
+                $date = strtotime((string)($formData['birthday'] ?? ''));
                 $day = mb_str_split(date('d', $date));
                 $month = mb_str_split(date('m', $date));
                 $year = mb_str_split(date('Y', $date));
@@ -183,20 +188,20 @@
                         Width="103.95" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeDocumentType = mb_str_split((string)$formData['codeDocumentType']);
+                $codeDocumentType = mb_str_split((string)($formData['codeDocumentType'] ?? ''));
             @endphp
             <TextObject VertAlign="Center" HorzAlign="Center" Top="340.20" Left="151.21" Border.Color="#000000"
-                        Border.Style="Dot" Border.Lines="All" Name="Text350" Text="{{$codeDocumentType[0]}}" Width="19.45" Height="19.45"
+                        Border.Style="Dot" Border.Lines="All" Name="Text350" Text="{{$codeDocumentType[0] ?? '-'}}" Width="19.45" Height="19.45"
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 8pt"/>
             <TextObject Border.Lines="All" Border.Style="Dot" Border.Color="#000000" Left="170.10" Top="340.20"
-                        HorzAlign="Center" VertAlign="Center" Name="Text349" Text="{{$codeDocumentType[1]}}" Width="19.45" Height="19.45"
+                        HorzAlign="Center" VertAlign="Center" Name="Text349" Text="{{$codeDocumentType[1] ?? '-'}}" Width="19.45" Height="19.45"
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 8pt"/>
 
             <TextObject Left="37.80" Top="368.56" VertAlign="Center" Name="Text352" Text="Серия и номер" Width="103.95"
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $passportData = (string)$formData['passport'];
+                $passportData = (string)($formData['passport'] ?? '');
 
                 $passport = mb_str_split(substr($passportData, 0, 2) . "-" . substr($passportData, 2, 2) . "-" . substr($passportData, 4, 6));
             @endphp
@@ -207,7 +212,7 @@
             @endfor
 
             @php
-                $codeStatusTaxpayer = (string)$formData['codeStatusTaxpayer'];
+                $codeStatusTaxpayer = (string)($formData['codeStatusTaxpayer'] ?? '');
             @endphp
             <TextObject Left="37.80" Top="396.91" HorzAlign="Center" VertAlign="Center" Name="Text378"
                         Text="Код статуса налогоплательщика" Width="198.45" Height="19.45" Padding="2, 0, 2, 0"
@@ -226,7 +231,7 @@
                         Width="132.30" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $phoneNumber = mb_str_split((string)$formData['phoneNumber'])
+                $phoneNumber = mb_str_split((string)($formData['phoneNumber'] ?? ''))
             @endphp
             @for($i = 179.56, $j = 0; $j <= 19; $i += 18.89, $j++)
                 <TextObject VertAlign="Center" HorzAlign="Center" Top="425.26" Left="{{$i}}" Border.Color="#000000"
@@ -280,7 +285,7 @@
                         Width="255.15" Height="28.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
 
             @php
-                $presentTaxpayer = (string)$formData['presentTaxpayer']
+                $presentTaxpayer = (string)($formData['presentTaxpayer'] ?? '')
             @endphp
             <TextObject VertAlign="Center" HorzAlign="Center" Top="538.65" Left="37.80" Border.Color="#000000"
                         Border.Style="Dot" Border.Lines="All" Name="Text1014" Text="{{$presentTaxpayer}}" Width="19.45" Height="19.45"
@@ -290,7 +295,7 @@
                         Width="321.30" Height="38.35" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $presentLastName = $formData['presentTaxpayerLastName'] ?? $formData['lastName'];
+                $presentLastName = ($formData['presentTaxpayerLastName'] ?? ($formData['lastName'] ?? ''));
                 $presentTaxpayerLastName = mb_str_split((string)$presentLastName)
             @endphp
             @for($i = 37.80, $j = 0; $j <= 15; $i += 18.9, $j++)
@@ -300,7 +305,7 @@
             @endfor
 
             @php
-                $presentName = $formData['presentTaxpayerName'] ?? $formData['name'];
+                $presentName = ($formData['presentTaxpayerName'] ?? ($formData['name'] ?? ''));
 
                 $presentTaxpayerName = mb_str_split((string)$presentName)
             @endphp
@@ -313,7 +318,7 @@
             @endfor
 
             @php
-                $presentPatronymic = $formData['presentTaxpayerPatronymic'] ?? $formData['patronymic'];
+                $presentPatronymic = ($formData['presentTaxpayerPatronymic'] ?? ($formData['patronymic'] ?? ''));
 
                 $presentTaxpayerPatronymic = mb_str_split((string)$presentPatronymic)
             @endphp
@@ -565,11 +570,11 @@
                         Width="47.25" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $inn = mb_str_split((string)$formData['INN'])
+                $inn = mb_str_split((string)($formData['INN'] ?? ''))
             @endphp
             @for($i = 198.45, $j = 0; $j <= 11; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="18.90"
-                            Left="{{$i}}" Name="{{'inn'.$j.'1'}}" Text="{{$inn[$j]}}" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
+                            Left="{{$i}}" Name="{{'inn'.$j.'1'}}" Text="{{$inn[$j] ?? '-'}}" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
                             Font="Tahoma, 8pt"/>
             @endfor
 
@@ -627,7 +632,7 @@
                         Width="38.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeBudgetClassification020 = mb_str_split((string)$formData['codeBudgetClassification020']);
+                $codeBudgetClassification020 = mb_str_split((string)($formData['codeBudgetClassification020'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 15; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="189" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -643,7 +648,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO030 = mb_str_split((string)$formData['codeOKTMO030']);
+                $codeOKTMO030 = mb_str_split((string)($formData['codeOKTMO030'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="217.35"
@@ -657,7 +662,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumTaxesForPayToBudget040 = mb_str_split((string)$formData['sumTaxesForPayToBudget040']);
+                $sumTaxesForPayToBudget040 = mb_str_split((string)($formData['sumTaxesForPayToBudget040'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="245.70" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -672,7 +677,7 @@
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumTaxesForReturnFromBudget050 = mb_str_split((string)$formData['sumTaxesForReturnFromBudget050']);
+                $sumTaxesForReturnFromBudget050 = mb_str_split((string)($formData['sumTaxesForReturnFromBudget050'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="274.05"
@@ -692,7 +697,7 @@
                         Width="652.05" Height="28.35" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
 
             @php
-                $codeBudgetClassification060 = mb_str_split((string)$formData['codeBudgetClassification060']);
+                $codeBudgetClassification060 = mb_str_split((string)($formData['codeBudgetClassification060'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 15; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="340.20"
@@ -708,7 +713,7 @@
                         Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO070 = mb_str_split((string)$formData['codeOKTMO070']);
+                $codeOKTMO070 = mb_str_split((string)($formData['codeOKTMO070'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="378" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -722,7 +727,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPaymentFirstQuarter080 = mb_str_split((string)$formData['sumAdvancedPaymentFirstQuarter080']);
+                $sumAdvancedPaymentFirstQuarter080 = mb_str_split((string)($formData['sumAdvancedPaymentFirstQuarter080'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="406.35"
@@ -740,7 +745,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO090 = mb_str_split((string)$formData['codeOKTMO090']);
+                $codeOKTMO090 = mb_str_split((string)($formData['codeOKTMO090'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="444.15"
@@ -752,7 +757,7 @@
                         Name="Text773" Width="652.05" Height="10" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPaymentHalfYear100 = mb_str_split((string)$formData['sumAdvancedPaymentHalfYear100']);
+                $sumAdvancedPaymentHalfYear100 = mb_str_split((string)($formData['sumAdvancedPaymentHalfYear100'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="472.50" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -778,7 +783,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedDecreaseHalfYear110 = mb_str_split((string)$formData['sumAdvancedDecreaseHalfYear110']);
+                $sumAdvancedDecreaseHalfYear110 = mb_str_split((string)($formData['sumAdvancedDecreaseHalfYear110'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="500.85"
@@ -792,7 +797,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO120 = mb_str_split((string)$formData['codeOKTMO120']);
+                $codeOKTMO120 = mb_str_split((string)($formData['codeOKTMO120'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="538.65" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -807,7 +812,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPayedNineMonth130 = mb_str_split((string)$formData['sumAdvancedPayedNineMonth130']);
+                $sumAdvancedPayedNineMonth130 = mb_str_split((string)($formData['sumAdvancedPayedNineMonth130'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="567"
@@ -823,7 +828,7 @@
                         Width="245.70" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedDecreaseNineMonth140 = mb_str_split((string)$formData['sumAdvancedDecreaseNineMonth140']);
+                $sumAdvancedDecreaseNineMonth140 = mb_str_split((string)($formData['sumAdvancedDecreaseNineMonth140'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="595.35" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -841,7 +846,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO150 = mb_str_split((string)$formData['codeOKTMO150']);
+                $codeOKTMO150 = mb_str_split((string)($formData['codeOKTMO150'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="633.15"
@@ -856,7 +861,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPayedYear160 = mb_str_split((string)$formData['sumAdvancedPayedYear160']);
+                $sumAdvancedPayedYear160 = mb_str_split((string)($formData['sumAdvancedPayedYear160'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="661.50" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -871,7 +876,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedDecreaseYear170 = mb_str_split((string)$formData['sumAdvancedDecreaseYear170']);
+                $sumAdvancedDecreaseYear170 = mb_str_split((string)($formData['sumAdvancedDecreaseYear170'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="689.85"
@@ -905,7 +910,7 @@
                         Width="47.25" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             @for($i = 198.45, $j = 0; $j < 12; $i += 18.9, $j++)
                 <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="{{ $i }}" Top="18.90"
-                            VertAlign="Center" Name="{{'inn' . $j}}2" Text="{{$inn[$j]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                            VertAlign="Center" Name="{{'inn' . $j}}2" Text="{{$inn[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                             Font="Comic Sans MS, 8pt"/>
             @endfor
 
@@ -947,7 +952,7 @@
                         Width="28.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $incomeSum010 = (string)$formData['incomeSum010'];
+                $incomeSum010 = (string)($formData['incomeSum010'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($incomeSum010, 0, strpos($incomeSum010, "."))));
                 $penny = mb_str_split(substr($incomeSum010, strpos($incomeSum010, ".") + 1, 2));
             @endphp
@@ -960,18 +965,18 @@
             <TextObject VertAlign="Center" HorzAlign="Center" Top="170.10" Left="614.25" Name="Text1255" Text="."
                         Width="66.15" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="652.05" Top="170.10"
-                        VertAlign="Center" Name="Text1256" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1256" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="170.10" Left="670.95" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1257" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1257" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
 
-            @php $incomeCode = mb_str_split((string)$formData['incomeCode001']) @endphp
+            @php $incomeCode = mb_str_split((string)($formData['incomeCode001'] ?? '')) @endphp
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="396.90" Top="141.75"
-                        VertAlign="Center" Name="incomeCode001_1" Text="{{ $incomeCode[0] }}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="incomeCode001_1" Text="{{ $incomeCode[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="141.75" Left="415.80" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="incomeCode001_2" Text="{{ $incomeCode[1] }}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="incomeCode001_2" Text="{{ $incomeCode[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
 
             <TextObject Left="292.95" Top="141.75" HorzAlign="Center" VertAlign="Center" Name="Text1260"
@@ -992,7 +997,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $noTaxedIncomeSum020 = (string)$formData['noTaxedIncomeSum020'];
+                $noTaxedIncomeSum020 = (string)($formData['noTaxedIncomeSum020'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($noTaxedIncomeSum020, 0, strpos($noTaxedIncomeSum020, "."))));
                 $penny = mb_str_split(substr($noTaxedIncomeSum020, strpos($noTaxedIncomeSum020, ".") + 1, 2));
             @endphp
@@ -1004,17 +1009,17 @@
 
 
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="670.95" Top="198.45"
-                        VertAlign="Center" Name="Text1268" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1268" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="198.45" Left="652.05" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1269" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1269" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject Left="614.25" Top="198.45" HorzAlign="Center" VertAlign="Center" Name="Text1270" Text="."
                         Width="66.15" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
 
 
             @php
-                $taxedIncomeSum030 = (string)$formData['taxedIncomeSum030'];
+                $taxedIncomeSum030 = (string)($formData['taxedIncomeSum030'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($taxedIncomeSum030, 0, strpos($taxedIncomeSum030, "."))));
                 $penny = mb_str_split(substr($taxedIncomeSum030, strpos($taxedIncomeSum030, ".") + 1, 2));
             @endphp
@@ -1027,10 +1032,10 @@
             <TextObject VertAlign="Center" HorzAlign="Center" Top="226.80" Left="614.25" Name="Text1297" Text="."
                         Width="66.15" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="652.05" Top="226.80"
-                        VertAlign="Center" Name="Text1298" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1298" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="226.80" Left="670.95" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1299" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1299" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
 
             <TextObject Left="37.80" Top="226.80" HorzAlign="Center" VertAlign="Center" Name="Text1300" Text="1.3."
@@ -1042,7 +1047,7 @@
                         Width="28.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $taxReturnSum040 = (string)$formData['taxReturnSum040'];
+                $taxReturnSum040 = (string)($formData['taxReturnSum040'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($taxReturnSum040, 0, strpos($taxReturnSum040, "."))));
                 $penny = mb_str_split(substr($taxReturnSum040, strpos($taxReturnSum040, ".") + 1, 2));
             @endphp
@@ -1055,10 +1060,10 @@
             <TextObject VertAlign="Center" HorzAlign="Center" Top="255.15" Left="614.25" Name="Text1316" Text="."
                         Width="66.15" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="652.05" Top="255.15"
-                        VertAlign="Center" Name="Text1317" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1317" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="255.15" Left="670.95" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1318" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1318" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
 
             <TextObject Left="37.80" Top="255.15" VertAlign="Center" Name="Text1319" Text="1.4." Width="18.90"
@@ -1069,7 +1074,7 @@
                         Width="28.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $taxReduceSum050 = (string)$formData['taxReduceSum050'];
+                $taxReduceSum050 = (string)($formData['taxReduceSum050'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($taxReduceSum050, 0, strpos($taxReduceSum050, "."))));
                 $penny = mb_str_split(substr($taxReduceSum050, strpos($taxReduceSum050, ".") + 1, 2));
             @endphp
@@ -1082,10 +1087,10 @@
             <TextObject VertAlign="Center" HorzAlign="Center" Top="283.50" Left="614.25" Name="Text1335" Text="."
                         Width="66.15" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="652.05" Top="283.50"
-                        VertAlign="Center" Name="Text1336" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1336" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="283.50" Left="670.95" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1337" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1337" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
 
             <TextObject Left="37.80" Top="283.50" VertAlign="Center" Name="Text1338" Text="1.5." Width="18.90"
@@ -1097,7 +1102,7 @@
                         Width="28.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $taxBase060 = (string)$formData['taxBase060'];
+                $taxBase060 = (string)($formData['taxBase060'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($taxBase060, 0, strpos($taxBase060, "."))));
                 $penny = mb_str_split(substr($taxBase060, strpos($taxBase060, ".") + 1, 2));
             @endphp
@@ -1110,10 +1115,10 @@
             <TextObject VertAlign="Center" HorzAlign="Center" Top="311.85" Left="614.25" Name="Text1354" Text="."
                         Width="66.15" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="652.05" Top="311.85"
-                        VertAlign="Center" Name="Text1355" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1355" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="311.85" Left="670.95" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1356" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1356" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
 
             <TextObject Left="37.80" Top="311.85" VertAlign="Center" Name="Text1357" Text="1.6." Width="18.90"
@@ -1131,7 +1136,7 @@
                         Width="28.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $taxBaseSumSecondPoint061 = (string)$formData['taxBaseSumSecondPoint061'];
+                $taxBaseSumSecondPoint061 = (string)($formData['taxBaseSumSecondPoint061'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($taxBaseSumSecondPoint061, 0, strpos($taxBaseSumSecondPoint061, "."))));
                 $penny = mb_str_split(substr($taxBaseSumSecondPoint061, strpos($taxBaseSumSecondPoint061, ".") + 1, 2));
             @endphp
@@ -1144,14 +1149,14 @@
             <TextObject Left="614.25" Top="340.20" HorzAlign="Center" VertAlign="Center" Name="Text1403" Text="."
                         Width="66.15" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
             <TextObject VertAlign="Center" Top="340.20" Left="652.05" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1402" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1402" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="670.95" Top="340.20"
-                        VertAlign="Center" Name="Text1401" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1401" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
 
             @php
-                $taxBaseSumThirdPoint062 = (string)$formData['taxBaseSumThirdPoint062'];
+                $taxBaseSumThirdPoint062 = (string)($formData['taxBaseSumThirdPoint062'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($taxBaseSumThirdPoint062, 0, strpos($taxBaseSumThirdPoint062, "."))));
                 $penny = mb_str_split(substr($taxBaseSumThirdPoint062, strpos($taxBaseSumThirdPoint062, ".") + 1, 2));
             @endphp
@@ -1164,14 +1169,14 @@
             <TextObject VertAlign="Center" Top="378.00" Left="37.80" Name="Text1381" Text="1.6.2." Width="28.35"
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             <TextObject VertAlign="Center" Top="378.00" Left="652.05" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1383" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1383" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="670.95" Top="378.00"
-                        VertAlign="Center" Name="Text1382" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1382" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
 
             @php
-                $otherTaxBases063 = (string)$formData['otherTaxBases063'];
+                $otherTaxBases063 = (string)($formData['otherTaxBases063'] ?? '');
                 $mainPart = array_reverse(mb_str_split(substr($otherTaxBases063, 0, strpos($otherTaxBases063, "."))));
                 $penny = mb_str_split(substr($otherTaxBases063, strpos($otherTaxBases063, ".") + 1, 2));
             @endphp
@@ -1182,10 +1187,10 @@
             @endfor
 
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="670.95" Top="415.80"
-                        VertAlign="Center" Name="Text1363" Text="{{$penny[1]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1363" Text="{{$penny[1] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="415.80" Left="652.05" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1364" Text="{{$penny[0]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1364" Text="{{$penny[0] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject Left="614.25" Top="415.80" HorzAlign="Center" VertAlign="Center" Name="Text1365" Text="."
                         Width="66.15" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
@@ -1224,14 +1229,14 @@
                         Font="Comic Sans MS, 6pt"/>
             <TextObject VertAlign="Center" Top="491.40" Left="37.80" Name="Text1478" Text="2.1." Width="18.90"
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
-            @php $totalTaxSumToPay = mb_str_split((string)$formData['totalTaxSumToPay070']) @endphp
+            @php $totalTaxSumToPay = mb_str_split((string)($formData['totalTaxSumToPay070'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="{{ $i }}" Top="491.40"
                             VertAlign="Center" Name="totalTaxSumToPay{{$j}}" Text="{{$totalTaxSumToPay[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                             Font="Comic Sans MS, 8pt"/>
             @endfor
 
-            @php $holdTaxesSum = mb_str_split((string)$formData['holdTaxesSum080']) @endphp
+            @php $holdTaxesSum = mb_str_split((string)($formData['holdTaxesSum080'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Top="519.75" Left="{{$i}}" Border.Lines="All" Border.Color="#000000"
                             Border.Style="Dot" Name="holdTaxesSum{{$j}}" Text="{{ $holdTaxesSum[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
@@ -1251,37 +1256,37 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             <TextObject VertAlign="Center" Top="585.90" Left="37.80" Name="Text1606" Text="2.3." Width="18.90"
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
-            @php $holdTaxesSumThirdPoint = mb_str_split((string)$formData['holdTaxesSumThirdPoint081']) @endphp
+            @php $holdTaxesSumThirdPoint = mb_str_split((string)($formData['holdTaxesSumThirdPoint081'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Top="548.10" Left="{{$i}}" Border.Lines="All" Border.Color="#000000"
                             Border.Style="Dot" Name="holdTaxesSumThirdPoint{{$j}}" Text="{{ $holdTaxesSumThirdPoint[$j] ?? '-' }}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                             Font="Comic Sans MS, 8pt"/>
             @endfor
-            @php $holdTaxesSumMaterial = mb_str_split((string)$formData['holdTaxesSumMaterial090']) @endphp
+            @php $holdTaxesSumMaterial = mb_str_split((string)($formData['holdTaxesSumMaterial090'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="{{$i}}" Top="585.90"
                             VertAlign="Center" Name="holdTaxesSumMaterial{{$j}}" Text="{{ $holdTaxesSumMaterial[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                             Font="Comic Sans MS, 8pt"/>
             @endfor
-            @php $foreignTaxes = mb_str_split((string)$formData['foreignTaxes130']) @endphp
+            @php $foreignTaxes = mb_str_split((string)($formData['foreignTaxes130'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="{{$i}}" Top="680.40"
                             VertAlign="Center" Name="foreignTaxes{{$j}}" Text="{{$foreignTaxes[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                             Font="Comic Sans MS, 8pt"/>
             @endfor
-            @php $patentTaxes = mb_str_split((string)$formData['patentTaxes140']) @endphp
+            @php $patentTaxes = mb_str_split((string)($formData['patentTaxes140'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Top="708.75" Left="{{$i}}" Border.Lines="All" Border.Color="#000000"
                             Border.Style="Dot" Name="patentTaxes{{$j}}" Text="{{$patentTaxes[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                             Font="Comic Sans MS, 8pt"/>
             @endfor
-            @php $totalTaxSumToPayInBudget = mb_str_split((string)$formData['totalTaxSumToPayInBudget150']) @endphp
+            @php $totalTaxSumToPayInBudget = mb_str_split((string)($formData['totalTaxSumToPayInBudget150'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="{{$i}}" Top="737.10"
                             VertAlign="Center" Name="totalTaxSumToPayInBudget{{$j}}" Text="{{$totalTaxSumToPay[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                             Font="Comic Sans MS, 8pt"/>
             @endfor
-            @php $totalTaxReturnSum = mb_str_split((string)$formData['totalTaxReturnSum160']) @endphp
+            @php $totalTaxReturnSum = mb_str_split((string)($formData['totalTaxReturnSum160'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Top="765.45" Left="{{$i}}" Border.Lines="All" Border.Color="#000000"
                             Border.Style="Dot" Name="totalTaxReturnSum{{$j}}" Text="{{$totalTaxReturnSum[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
@@ -1315,13 +1320,13 @@
                         Width="292.95" Height="28.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             <TextObject VertAlign="Center" Top="642.60" Left="37.80" Name="Text1670" Text="2.5." Width="18.90"
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
-            @php $payedSalesTax = mb_str_split((string)$formData['payedSalesTax100']) @endphp
+            @php $payedSalesTax = mb_str_split((string)($formData['payedSalesTax100'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Top="614.25" Left="{{$i}}" Border.Lines="All" Border.Color="#000000"
                             Border.Style="Dot" Name="payedSalesTax{{$j}}" Text="{{$payedSalesTax[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                             Font="Comic Sans MS, 8pt"/>
             @endfor
-            @php $fixedExpenseSum = mb_str_split((string)$formData['fixedExpenseSum120']) @endphp
+            @php $fixedExpenseSum = mb_str_split((string)($formData['fixedExpenseSum120'] ?? '')) @endphp
             @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
                 <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="{{$i}}" Top="642.60"
                             VertAlign="Center" Name="fixedExpenseSum{{$j}}" Text="{{$fixedExpenseSum[$j] ?? '-'}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"

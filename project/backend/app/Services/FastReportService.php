@@ -77,6 +77,7 @@ class FastReportService
         }
 
         header('Allowed-Hosts: *');
+        header('Access-Control-Allow-Origin: *');
 
         return $this->downloadFile($exportFileId);
     }
@@ -124,7 +125,7 @@ class FastReportService
             "pagesCount" => 10,
             "format" => $this->format
         ]));
-        dd($exportFile);
+
         return $exportFile['id'];
     }
 
