@@ -736,7 +736,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPayedNineMonth130 = mb_str_split((string)$payment227['sumAdvancedPayedNineMonth130'] ?? '');
+                $sumAdvancedPayedNineMonth130 = mb_str_split((string)($payment227['sumAdvancedPayedNineMonth130'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="567"
@@ -770,7 +770,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO150 = mb_str_split((string)$payment227['codeOKTMO150'] ?? '');
+                $codeOKTMO150 = mb_str_split((string)($payment227['codeOKTMO150'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="633.15"
