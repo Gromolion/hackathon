@@ -73,8 +73,7 @@ Route::post('/get-file', function (Request $request, FastReportService $service)
         "fixedExpenseSum120" => "74526",
         "foreignTaxes130" => "1346",
         "patentTaxes140" => "12421",
-        "totalTaxSumToPayInBudget150" => "",
-        "totalTaxReturnSum160" => ""
+        "totalTaxSumToPayInBudget150" => "4124124",
     ];
 
 //    $formData = [
