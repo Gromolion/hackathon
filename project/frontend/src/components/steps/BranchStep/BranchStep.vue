@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-import { pipe } from 'ramda'
 import { useDocumentStore } from 'stores/document-store'
 import { useStepsStore } from 'stores/steps-store'
 
