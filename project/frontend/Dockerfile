@@ -9,7 +9,7 @@ ENV BACKEND_BASE=http://localhost:8080
 # build stage
 FROM develop-stage as build-stage
 RUN yarn
-RUN quasar build
+RUN quasar build --debug
 # production stage
 FROM nginx:1.17.5-alpine as production-stage
 COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
