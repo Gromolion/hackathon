@@ -16,13 +16,13 @@
             <TextObject Left="349.65" Top="56.70" HorzAlign="Center" VertAlign="Center" Name="Text192" Text="Стр."
                         Width="47.25" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             <TextObject VertAlign="Center" HorzAlign="Center" Top="56.70" Left="396.90" Border.Color="#000000"
-                        Border.Style="Dot" Border.Lines="All" Name="Text207" Text="0" Width="19.45" Height="19.45"
+                        Border.Style="Dot" Border.Lines="All" Name="Text207" Text="-" Width="19.45" Height="19.45"
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" HorzAlign="Center" Top="56.70" Left="415.80" Border.Color="#000000"
-                        Border.Style="Dot" Border.Lines="All" Name="Text209" Text="0" Width="19.45" Height="19.45"
+                        Border.Style="Dot" Border.Lines="All" Name="Text209" Text="-" Width="19.45" Height="19.45"
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 8pt"/>
             <TextObject Border.Lines="All" Border.Style="Dot" Border.Color="#000000" Left="434.70" Top="56.70"
-                        HorzAlign="Center" VertAlign="Center" Name="Text208" Text="1" Width="19.45" Height="19.45"
+                        HorzAlign="Center" VertAlign="Center" Name="Text208" Text="-" Width="19.45" Height="19.45"
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 8pt"/>
 
 
@@ -573,15 +573,13 @@
                             Font="Tahoma, 8pt"/>
             @endfor
 
-
-
             <TextObject Left="349.65" Top="56.70" VertAlign="Center" HorzAlign="Center" Name="Text600" Text="Стр."
                         Width="47.25" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             <TextObject Left="396.90" Top="56.70" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
-                        VertAlign="Center" Name="Text601" Text="0" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text601" Text="-" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
                         Font="Tahoma, 8pt"/>
             <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="56.70"
-                        Left="434.70" Name="Text602" Text="2" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
+                        Left="434.70" Name="Text602" Text="-" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
                         Font="Tahoma, 8pt"/>
             <TextObject Left="415.80" Top="56.70" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
                         VertAlign="Center" Name="Text603" Text="0" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
@@ -784,7 +782,7 @@
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="500.85"
-                            Left="{{$j}}" Name="{{'sumAdvancedDecreaseHalfYear110'.$j}}" Text="{{$sumAdvancedDecreaseHalfYear110[$j] ?? '-'}}" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
+                            Left="{{$i}}" Name="{{'sumAdvancedDecreaseHalfYear110'.$j}}" Text="{{$sumAdvancedDecreaseHalfYear110[$j] ?? '-'}}" Width="18.90" Height="18.90" Padding="2, 0, 2, 0"
                             Font="Tahoma, 8pt"/>
             @endfor
 
@@ -905,52 +903,21 @@
         <DataBand Name="Data5" Width="718.20" Height="955.00">
             <TextObject VertAlign="Center" HorzAlign="Center" Top="18.90" Left="151.20" Name="Text1209" Text="ИНН"
                         Width="47.25" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="198.45" Top="18.90"
-                        VertAlign="Center" Name="Text1210" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="18.90" Left="217.35" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1212" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="255.15" Top="18.90"
-                        VertAlign="Center" Name="Text1213" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="18.90" Left="236.25" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1214" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="311.85" Top="18.90"
-                        VertAlign="Center" Name="Text1217" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="18.90" Left="330.75" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1218" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="292.95" Top="18.90"
-                        VertAlign="Center" Name="Text1219" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="18.90" Left="274.05" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1220" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="387.45" Top="18.90"
-                        VertAlign="Center" Name="Text1221" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="18.90" Left="406.35" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1222" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="368.55" Top="18.90"
-                        VertAlign="Center" Name="Text1223" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="18.90" Left="349.65" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1224" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
+            @for($i = 198.45, $j = 0; $j < 12; $i += 18.9, $j++)
+                <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="{{ $i }}" Top="18.90"
+                            VertAlign="Center" Name="{{'inn' . $j}}2" Text="{{$inn[$j]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                            Font="Comic Sans MS, 8pt"/>
+            @endfor
             <TextObject Left="349.65" Top="56.70" HorzAlign="Center" VertAlign="Center" Name="Text1225" Text="Стр. "
                         Width="47.25" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
             <TextObject VertAlign="Center" Top="56.70" Left="396.90" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1226" Text="0" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1226" Text="-" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="434.70" Top="56.70"
-                        VertAlign="Center" Name="Text1227" Text="3" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="Text1227" Text="-" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="56.70" Left="415.80" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1228" Text="0" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="Text1228" Text="-" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject Left="37.80" Top="85.05" HorzAlign="Center" VertAlign="Center" Name="Text1232" Text="Фамилия"
                         Width="47.25" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
@@ -1024,11 +991,12 @@
             <TextObject VertAlign="Center" Top="170.10" Left="670.95" Border.Lines="All" Border.Color="#000000"
                         Border.Style="Dot" Name="Text1257" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
+            @php $incomeCode = mb_str_split((string)$formData['incomeCode001']) @endphp
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="396.90" Top="141.75"
-                        VertAlign="Center" Name="Text1258" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        VertAlign="Center" Name="incomeCode001_1" Text="{{ $incomeCode[0] }}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject VertAlign="Center" Top="141.75" Left="415.80" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1259" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                        Border.Style="Dot" Name="incomeCode001_2" Text="{{ $incomeCode[1] }}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
             <TextObject Left="292.95" Top="141.75" HorzAlign="Center" VertAlign="Center" Name="Text1260"
                         Text="Код вида дохода" Width="75.60" Height="19.45" Padding="2, 0, 2, 0"
@@ -1481,45 +1449,12 @@
                         Font="Comic Sans MS, 6pt"/>
             <TextObject VertAlign="Center" Top="491.40" Left="37.80" Name="Text1478" Text="2.1." Width="18.90"
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="396.90" Top="491.40"
-                        VertAlign="Center" Name="Text1479" Text="0" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="491.40" Left="415.80" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1480" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="453.60" Top="491.40"
-                        VertAlign="Center" Name="Text1481" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="491.40" Left="434.70" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1482" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="510.30" Top="491.40"
-                        VertAlign="Center" Name="Text1483" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="491.40" Left="529.20" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1484" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="491.40" Top="491.40"
-                        VertAlign="Center" Name="Text1485" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="491.40" Left="472.50" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1486" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="585.90" Top="491.40"
-                        VertAlign="Center" Name="Text1487" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="567.00" Top="491.40"
-                        VertAlign="Center" Name="Text1488" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="491.40" Left="548.10" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1489" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="491.40" Left="604.80" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1490" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
-            <TextObject VertAlign="Center" Top="491.40" Left="623.70" Border.Lines="All" Border.Color="#000000"
-                        Border.Style="Dot" Name="Text1491" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
-                        Font="Comic Sans MS, 8pt"/>
+            @php $totalTaxSumToPay = mb_str_split((string)$formData['totalTaxSumToPay070']) @endphp
+            @for($i = 396.90, $j = 0; $j < 13; $i += 18.9, $j++)
+                <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="{{ $i }}" Top="491.40"
+                            VertAlign="Center" Name="totalTaxSumToPay{{$j}}" Text="{{$totalTaxSumToPay[$j]}}" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
+                            Font="Comic Sans MS, 8pt"/>
+            @endfor
             <TextObject Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Left="623.70" Top="519.75"
                         VertAlign="Center" Name="Text1492" Text="7" Width="18.90" Height="19.45" Padding="2, 0, 2, 0"
                         Font="Comic Sans MS, 8pt"/>
