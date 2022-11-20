@@ -1,4 +1,7 @@
 {
+  "title": "Заполнение акта об оказании услуги",
+  "link": "/act",
+  "icon": "description",
   "model": {
     "actNumber": "",
     "actDate": "",
