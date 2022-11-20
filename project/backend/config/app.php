@@ -232,4 +232,14 @@ return [
 
     ],
 
+    'fastReportsApiKey' => '3qoims3w765tnktrftubj7rp9ugey4kpcddgxiqhtxczk84c97hy',
+    'locationApi' => 'Kladr',
+    'locationApiConfig' => [
+        'apiKey' => 'hAtHzGyDr2zZ4AGBBeGdYazRhBGFz3h8',
+        'url' => 'https://kladr-api.ru/api.php'
+    ],
+    'innApiConfig' => [
+        'requestIdUrl' => 'https://service.nalog.ru/inn-new-proc.do',
+        'innUrl' => 'https://service.nalog.ru/inn-new-proc.json'
+    ]
 ];

@@ -61,7 +61,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ../project/backend:/var/www/html
-      - ./app/backend/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.inidocker p
+      - ./app/backend/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
     environment:
       - PHP_IDE_CONFIG=serverName=Docker
     depends_on:
