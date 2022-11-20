@@ -554,8 +554,8 @@
                         Width="38.35" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $excludePayment2227 = $formData['excludePayment2-227'][0];
-                $codeBudgetClassification020 = mb_str_split((string)$excludePayment2227['codeBudgetClassification020']);
+                $excludePayment2227 = $formData['excludePayment2-227'][0] ?? [];
+                $codeBudgetClassification020 = mb_str_split((string)($excludePayment2227['codeBudgetClassification020'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 15; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="189" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -571,7 +571,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO030 = mb_str_split((string)$excludePayment2227['codeOKTMO030']);
+                $codeOKTMO030 = mb_str_split((string)($excludePayment2227['codeOKTMO030'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="217.35"
@@ -585,7 +585,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumTaxesForPayToBudget040 = mb_str_split((string)$excludePayment2227['sumTaxesForPayToBudget040']);
+                $sumTaxesForPayToBudget040 = mb_str_split((string)($excludePayment2227['sumTaxesForPayToBudget040'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="245.70" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -600,7 +600,7 @@
                         Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumTaxesForReturnFromBudget050 = mb_str_split((string)$excludePayment2227['sumTaxesForReturnFromBudget050']);
+                $sumTaxesForReturnFromBudget050 = mb_str_split((string)($excludePayment2227['sumTaxesForReturnFromBudget050'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="274.05"
@@ -620,8 +620,8 @@
                         Width="652.05" Height="28.35" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt, style=Bold"/>
 
             @php
-                $payment227 = $formData['payment2-227'][0];
-                $codeBudgetClassification060 = mb_str_split((string)$payment227['codeBudgetClassification060']);
+                $payment227 = $formData['payment2-227'][0] ?? [];
+                $codeBudgetClassification060 = mb_str_split((string)($payment227['codeBudgetClassification060'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 15; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="340.20"
@@ -637,7 +637,7 @@
                         Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO070 = mb_str_split((string)$payment227['codeOKTMO070']);
+                $codeOKTMO070 = mb_str_split((string)($payment227['codeOKTMO070'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="378" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -651,7 +651,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPaymentFirstQuarter080 = mb_str_split((string)$payment227['sumAdvancedPaymentFirstQuarter080']);
+                $sumAdvancedPaymentFirstQuarter080 = mb_str_split((string)($payment227['sumAdvancedPaymentFirstQuarter080'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="406.35"
@@ -669,7 +669,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO090 = mb_str_split((string)$payment227['codeOKTMO090']);
+                $codeOKTMO090 = mb_str_split((string)($payment227['codeOKTMO090'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="444.15"
@@ -681,7 +681,7 @@
                         Name="Text773" Width="652.05" Height="10" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPaymentHalfYear100 = mb_str_split((string)$payment227['sumAdvancedPaymentHalfYear100']);
+                $sumAdvancedPaymentHalfYear100 = mb_str_split((string)($payment227['sumAdvancedPaymentHalfYear100'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="472.50" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -707,7 +707,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedDecreaseHalfYear110 = mb_str_split((string)$payment227['sumAdvancedDecreaseHalfYear110']);
+                $sumAdvancedDecreaseHalfYear110 = mb_str_split((string)($payment227['sumAdvancedDecreaseHalfYear110'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="500.85"
@@ -721,7 +721,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO120 = mb_str_split((string)$payment227['codeOKTMO120']);
+                $codeOKTMO120 = mb_str_split((string)($payment227['codeOKTMO120'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="538.65" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -736,7 +736,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPayedNineMonth130 = mb_str_split((string)$payment227['sumAdvancedPayedNineMonth130']);
+                $sumAdvancedPayedNineMonth130 = mb_str_split((string)$payment227['sumAdvancedPayedNineMonth130'] ?? '');
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="567"
@@ -752,7 +752,7 @@
                         Width="245.70" Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedDecreaseNineMonth140 = mb_str_split((string)$payment227['sumAdvancedDecreaseNineMonth140']);
+                $sumAdvancedDecreaseNineMonth140 = mb_str_split((string)($payment227['sumAdvancedDecreaseNineMonth140'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="595.35" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -770,7 +770,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $codeOKTMO150 = mb_str_split((string)$payment227['codeOKTMO150']);
+                $codeOKTMO150 = mb_str_split((string)$payment227['codeOKTMO150'] ?? '');
             @endphp
             @for($i = 387.45, $j = 0; $j <= 10; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="633.15"
@@ -785,7 +785,7 @@
                         Height="19.45" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedPayedYear160 = mb_str_split((string)$payment227['sumAdvancedPayedYear160']);
+                $sumAdvancedPayedYear160 = mb_str_split((string)($payment227['sumAdvancedPayedYear160'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject Left="{{$i}}" Top="661.50" Border.Lines="All" Border.Color="#000000" Border.Style="Dot"
@@ -800,7 +800,7 @@
                         Width="56.70" Height="18.90" Padding="2, 0, 2, 0" Font="Comic Sans MS, 6pt"/>
 
             @php
-                $sumAdvancedDecreaseYear170 = mb_str_split((string)$payment227['sumAdvancedDecreaseYear170']);
+                $sumAdvancedDecreaseYear170 = mb_str_split((string)($payment227['sumAdvancedDecreaseYear170'] ?? ''));
             @endphp
             @for($i = 387.45, $j = 0; $j <= 12; $i += 18.9, $j++)
                 <TextObject VertAlign="Center" Border.Style="Dot" Border.Color="#000000" Border.Lines="All" Top="689.85"
