@@ -1,0 +1,574 @@
+{
+  "model": {
+    "name": "",
+    "patronymic": "",
+    "lastName": "",
+    "countryCode": "643",
+    "codeCategoryTaxpayer": "720",
+    "birthDate": "",
+    "phoneNumber": "",
+    "codeDocumentType": "21",
+    "passport": "",
+    "codeStatusTaxpayer": "",
+    "INN": "",
+    "presentTaxpayer": "1",
+    "presentTaxpayerLastName": "1",
+    "presentTaxpayerName": "",
+    "presentTaxpayerPatronymic": "",
+    "presentTaxpayerDocumentName": "",
+    "presentTaxpayerDocumentRequisites": "",
+    "excludePayment2-227": [{}],
+    "payment2-227": [{}],
+    "incomeCode001": "03",
+    "incomeSum010": "",
+    "classificationCode": "",
+    "noTaxedIncomeSum020": "",
+    "taxedIncomeSum030": "",
+    "taxReturnSum040": "",
+    "taxReduceSum050": "",
+    "taxBaseSumSecondPoint061": "",
+    "taxBaseSumThirdPoint062": "",
+    "otherTaxBases063": "",
+    "totalTaxSumToPay070": "",
+    "holdTaxesSum080": "",
+    "holdTaxesSumThirdPoint081": "",
+    "holdTaxesSumMaterial090": "",
+    "payedSalesTax100": "",
+    "fixedExpenseSum120": "",
+    "foreignTaxes130": "",
+    "patentTaxes140": "",
+    "totalTaxSumToPayInBudget150": "",
+    "totalTaxReturnSum160": ""
+  },
+  "steps": {
+    "TITLE": {
+      "type": "INFO",
+      "next": "S1Branch",
+      "title": "Привет от команды CRAB RAVE",
+      "text": "В этом сценарии мы легко и просто заполним часть формы 3-НДФЛ"
+    },
+    "S1Branch": {
+      "type": "BRANCH",
+      "title": "Выбери",
+      "acceptText": "Орел",
+      "declineText": "Решка",
+      "accept": "set('firstName', 'Иван'), goto('S1')",
+      "decline": "goto('S7')"
+    },
+    "S1": {
+      "next": "S2",
+      "title": "Сведения о налогоплательщике",
+      "elements": [
+        {
+          "payload": {
+            "label": "Имя",
+            "model": "name",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Отчество",
+            "model": "patronymic",
+            "hint": "Можно пропустить, если отчества нет"
+          }
+        },
+        {
+          "payload": {
+            "label": "Фамилия",
+            "model": "lastName",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Дата рождения",
+            "model": "birthDate",
+            "type": "date",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload":  {
+            "label": "Номер контактного телефона",
+            "model": "phoneNumber",
+            "mask": "+# (###) ###-##-##",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "externalLink": "Список кодов стран",
+            "externalLinkURL": "http://www.consultant.ru/document/cons_doc_LAW_283419/a2da79b1a48d13cf4e64f78e2670d3f77c0a35e6/",
+            "model": "countryCode",
+            "mask": "###",
+            "label": "Код страны налогоплательщика",
+            "placeholder": "000",
+            "hint": "Укажите 643, если вы гражданин РФ",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "externalLink": "Как указать код категории налогоплательщика?",
+            "externalLinkURL": "https://www.nalogia.ru/articles/268-kakoy-stavit-kod-kategorii-nalogoplatelshchika-v-deklaratsii-3-ndfl.php#:~:text=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C-,%D0%A7%D1%82%D0%BE%20%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82%20%D0%BA%D0%BE%D0%B4%20%D0%BA%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%B0,%D0%9D%D0%94%D0%A4%D0%9B%20%D0%B8%20%D1%81%20%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9%20%D1%86%D0%B5%D0%BB%D1%8C%D1%8E",
+            "model": "codeCategoryTaxpayer",
+            "mask": "###",
+            "label": "Код категории налогоплательщика",
+            "placeholder": "000",
+            "hint": "770 для фермеров, 720 для ИП",
+            "rules": ["requiredField"]
+          }
+        }
+      ]
+    },
+    "S2": {
+      "next": "S2Branch",
+      "title": "Сведения о документе, удостоверяющем личность",
+      "elements": [
+        {
+          "payload": {
+            "label": "Код вида документа",
+            "model": "codeDocumentType",
+            "mask": "##",
+            "hint": "Код паспорта - 21",
+            "externalLink": "Список всех кодов документов",
+            "externalLinkURL": "https://glavkniga.ru/situations/k501126",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Серия и номер",
+            "model" : "passport",
+            "mask": "#### ######",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Код статуса налогоплательщика",
+            "model": "codeStatusTaxpayer",
+            "mask": "#",
+            "hint": "1 - налоговый резидент Российской Федерации; 2 - лицо, не являющееся налоговым резидентом Российской Федерации",
+            "rules": ["requiredField"]
+          }
+        }
+      ]
+    },
+    "S2Branch": {
+      "type": "BRANCH",
+      "title": "Подставить ИНН",
+      "acceptText": "Да",
+      "declineText": "Нет",
+      "accept": "goto('S3')",
+      "decline": "goto('S3')"
+    },
+    "S3": {
+      "next": "S4",
+      "title": "Идентификационный номер налогоплательщика",
+      "elements": [
+        {
+          "payload": {
+            "label": "ИНН",
+            "model": "INN",
+            "mask": "############",
+            "rules": ["requiredField"]
+          }
+        }
+      ]
+    },
+    "S4": {
+      "next": "S5",
+      "title": "Достоверность и полноту сведений, указанных в настоящей декларации, подтверждаю:",
+      "elements": [
+        {
+          "payload": {
+            "label": "Кто подтверждает достоверность сведений",
+            "model": "presentTaxpayer",
+            "mask": "#",
+            "hint": "1 - налогоплательщик; 2 - представитель налогоплательщика",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Фамилия представителя налогоплательщика",
+            "model": "presentTaxpayerLastName",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Имя представителя налогоплательщика",
+            "model": "presentTaxpayerName",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Отчество представителя налогоплательщика",
+            "model": "presentTaxpayerPatronymic",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "hint": "Можно пропустить, если отчества нет"
+          }
+        },
+        {
+          "payload": {
+            "label": "Наименование документа,",
+            "model": "presentTaxpayerDocumentName",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "hint": "подтверждающего полномочия представителя налогоплательщика"
+          }
+        },
+        {
+          "payload": {
+            "label": "Реквизиты документа,",
+            "model": "presentTaxpayerDocumentRequisites",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "hint": "подтверждающего полномочия представителя налогоплательщика"
+          }
+        }
+      ]
+    },
+    "S5": {
+      "next": "S6",
+      "title": "Сведения о суммах налога, подлежащих уплате в бюджет (за исключением сумм налога, уплачиваемого в соответствии с пунктом 7 статьи 227 НК РФ)",
+      "elements": [
+        {
+        "type": "GROUP",
+        "payload": {
+          "model": "excludePayment2-227",
+          "min": 1,
+          "elements": [
+            {
+             "label": "020 - Код бюджетной классификации",
+             "model": "codeBudgetClassification020",
+             "externalLink": "Узнать код",
+             "externalLinkURL": "https://www.nalog.gov.ru/rn77/taxation/kbk/",
+             "mask": "################",
+             "rules": ["requiredField"]
+            },
+            {
+              "label": "030 - Код по ОКТМО",
+              "model": "codeOKTMO030",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "040 - Сумма налога, подлежащая уплате в бюджет",
+              "model": "sumTaxesForPayToBudget040",
+              "mask": "#############",
+              "hint": "Формула расчета",
+              "tooltip": "Доходы, подлежащие налогообложению по ставке 30% x 0.3 + налог с доходов, в  отношении  которых применяются особые налоговые ставки",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "050 - Сумма налога, подлежащая возврату из бюджета",
+              "model": "sumTaxesForReturnFromBudget050",
+              "mask": "#############",
+              "hint": "Формула расчета",
+              "tooltip": "Из суммы удержанного и уплаченного авансом налога вычтите сумму доходов, подлжещих уплате в бюджет. Если получившиеся значения оказалось отрицательным или равным нулю, оставьте поле пустым"
+            }
+          ]
+        }
+        }
+      ]
+    },
+    "S6": {
+      "next": "S7",
+      "title": "Сведения о суммах налога (авансового платежа по налогу), уплачиваемого в соответствии с пунктом 7 статьи 227 НК РФ",
+      "elements": [{
+        "type": "GROUP",
+        "payload": {
+          "model": "payment2-227",
+          "min": 1,
+          "elements": [
+            {
+              "label": "060 - Код бюджетной классификации",
+              "model": "codeBudgetClassification060",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.nalog.gov.ru/rn77/taxation/kbk/",
+              "mask": "################",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "070 - Код по ОКТМО",
+              "model": "codeOKTMO070",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "080 - Сумма авансового платежа к уплате за первый квартал",
+              "model": "sumAdvancedPaymentFirstQuarter080",
+              "hint": "Формула расчета авансового платежа",
+              "tooltip": "Вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
+              "mask": "#############",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "090 - Код по ОКТМО",
+              "model": "codeOKTMO90",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########"
+            },
+            {
+              "label": "100 - Сумма авансового платежа к уплате за полугодие",
+              "model": "sumAdvancedPaymentHalfYear100",
+              "hint": "Формула расчета авансового платежа",
+              "tooltip": "Вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
+              "mask": "#############"
+            },
+            {
+              "label": "110 - Сумма авансового платежа к уменьшению за полугодие",
+              "model": "sumAdvancedDecreaseHalfYear110",
+              "hint": "Сумма, уплаченная за предыдущий отчетный период этого года.",
+              "tooltip": "Если такого платежа не было, оставьте поле пустым",
+              "mask": "#############"
+            },
+            {
+              "label": "120 - Код по ОКТМО",
+              "model": "codeOKTMO120",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########"
+            },
+            {
+              "label": "130 - Сумма авансового платежа к уплате за девять месяцев",
+              "model": "sumAdvancedPayedNineMonth130",
+              "hint": "Формула расчета авансового платежа",
+              "tooltip": "Вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
+              "mask": "#############"
+            },
+            {
+              "label": "140 - Сумма авансового платежа к уменьшению за девять месяцев",
+              "model": "sumAdvancedDecreaseNineMonth140",
+              "hint": "Сумма, уплаченная за предыдущий отчетный период этого года.",
+              "tooltip": "Если такого платежа не было, оставьте поле пустым",
+              "mask": "#############"
+            },
+            {
+              "label": "150 - Код по ОКТМО",
+              "model": "codeOKTMO150",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########"
+            },
+            {
+              "label": "160 - Сумма авансового платежа к уплате за календарный год",
+              "model": "sumAdvancedPayedYear160",
+              "hint": "Формула расчета авансового платежа",
+              "tooltip": "Вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
+              "mask": "#############"
+            },
+            {
+              "label": "170 - Сумма авансового платежа к уменьшению за календарный год",
+              "model": "sumAdvancedDecreaseYear170",
+              "hint": "Сумма, уплаченная за предыдущий отчетный период этого года.",
+              "tooltip": "Если такого платежа не было, оставьте поле пустым",
+              "mask": "#############"
+            }
+          ]
+        }
+      }
+      ]
+    },
+    "S7": {
+      "next": "S8",
+      "title": "Расчет налоговой базы",
+      "elements": [
+        {
+          "payload": {
+            "label": "001 - Код вида дохода",
+            "model": "incomeCode001",
+            "mask": "##",
+            "hint": "03 - код дохода облагаемого налогом по ставке 13% или 15%",
+            "externalLink": "Узнать код",
+            "externalLinkURL": "https://www.nalogia.ru/articles/185-kody-vida-dokhoda-v-3-ndfl.php#:~:text=%D0%9A%D0%BE%D0%B4%20%D0%B2%D0%B8%D0%B4%D0%B0%20%D0%B4%D0%BE%D1%85%D0%BE%D0%B4%D0%B0%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5,%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8)%20%D0%B4%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D0%B8%203%2D%D0%9D%D0%94%D0%A4%D0%9B"
+          }
+        },
+        {
+          "payload": {
+            "label": "010 - Сумма доходов",
+            "model": "incomeSum010",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Ваши доходы за отчетный период",
+            "maxLength": 16
+          }
+        },
+        {
+          "payload": {
+            "label": "020 - Сумма доходов, не подлежащих налогообложению",
+            "model": "noTaxedIncomeSum020",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Не может быть больше 4000 за вид дохода",
+            "maxLength": 16
+          }
+        },
+        {
+          "payload": {
+            "label": "030 - Сумма доходов, подлежащих налогообложению",
+            "model": "taxedIncomeSum030",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Сумма доходов минус сумма доходов не облагаемых налогом",
+            "maxLength": 16
+          }
+        },
+        {
+          "payload": {
+            "label": "040 - Сумма налоговых вычетов",
+            "model": "taxReturnSum040",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Налоговый вычет полагается для физических лиц с годовым доходом до 350000 рублей",
+            "externalLink": "Список стандартных налоговых вычетов",
+            "externalLinkURL": "https://www.nalog.gov.ru/rn77/taxation/taxes/ndfl/nalog_vichet/standart_nv/",
+            "maxLength": 16
+          }
+        },
+        {
+          "payload": {
+            "label": "050 - Сумма расходов, принимаемых в уменьшение полученных доходов",
+            "model": "taxReduceSum050",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Определяется путем указания суммы расходов по совокупности операций с ценными бумагами и производными финансовыми инструментами",
+            "maxLength": 16
+          }
+        },
+        {
+          "payload": {
+            "label": "060 - Налоговая база для исчисления налога",
+            "model": "taxBase060",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Сумма, с которой рассчитывается подоходный налог",
+            "maxLength": 16
+          }
+        },
+        {
+          "payload": {
+            "label": "061 - Сумма налоговой базы для исчисления налога по ставке 13%",
+            "model": "taxBaseSumSecondPoint061",
+            "rules": ["floatSum","fixedLength"],
+            "hint": "Сумма налоговой базы по статье 224.3.1 НК РФ (второй абзац)",
+            "tooltip": "Для граждан с суммарным годовым доходом меньше или равным 5 миллионнам рублей",
+            "maxLength": 16
+          }
+        },
+        {
+          "payload": {
+            "label": "062 - Сумма налоговой базы для исчисления налога по ставке 15%",
+            "model": "taxBaseSumThirdPoint062",
+            "rules": ["floatSum","fixedLength"],
+            "hint": "Сумма налоговой базы по статье 224.3.1 НК РФ (третий абзац)",
+            "tooltip": "Для граждан с суммарным годовым доходом больше 5 миллионнов рублей",
+            "maxLength": 16
+          }
+        },
+        {
+          "payload": {
+            "label": "063 - Сумма иных налоговых баз",
+            "model": "otherTaxBases063",
+            "rules": ["floatSum","fixedLength"],
+            "hint": "Заполняется только в отношении кодов вида дохода с \"17\" по \"25\"",
+            "maxLength": 16
+          }
+        }
+      ]
+    },
+    "S8": {
+      "next": "S9",
+      "title": "Расчет налоговой базы",
+      "elements": [
+        {
+          "payload": {
+            "label": "070 - Сумма налога, исчисленная к уплате",
+            "model": "totalTaxSumToPay070",
+            "mask": "############",
+            "rules": ["requiredField"],
+            "hint": "Определяется путем умножения налоговой базы, на соответствующую налоговую ставку (в процентах)"
+          }
+        },
+        {
+          "payload": {
+            "label": "080 - Сумма налога, удержанная у источника выплаты",
+            "model": "holdTaxesSum080",
+            "mask": "############",
+            "rules": ["requiredField"],
+            "hint": "Налог на доход физического лица, который был удержан с Вашего дохода"
+          }
+        },
+        {
+          "payload": {
+            "label": "081 - Сумма налога, удержанная по ставке 15%",
+            "model": "holdTaxesSumThirdPoint081",
+            "mask": "############",
+            "hint": "Сумма налога, удержанная у источника выплаты по статье 224.3.1 НК РФ (третий абзац)",
+            "tooltip": "Для граждан с суммарным годовым доходом больше 5 миллионнов рублей"
+          }
+        },
+        {
+          "payload": {
+            "label": "090 - Сумма налога, удержанная c доходов в виде материальной выгоды",
+            "model": "holdTaxesSumMaterial090",
+            "mask": "############",
+            "hint": "Особые случаи (например, выгода полученная с заемных средств)"
+          }
+        },
+        {
+          "payload": {
+            "label": "100 - Сумма торгового сбора, уплаченная в налоговом периоде, подлежащая зачету",
+            "model": "payedSalesTax100",
+            "mask": "############"
+          }
+        },
+        {
+          "payload": {
+            "label": "120 - Сумма фиксированных авансовых платежей или сумма налога на прибыль организаций",
+            "model": "fixedExpenseSum120",
+            "mask": "############",
+            "hint": "Заполняют иностранные граждане, осуществляющие трудовую деятельность по найму",
+            "tooltip": "Учитывается найм на физических лиц, для нужд не связанных с осуществлением предпринимательской деятельности"
+          }
+        },
+        {
+          "payload": {
+            "label": "130 - Сумма налога, уплаченная в иностранных государствах, подлежащая зачету в РФ",
+            "model": "foreignTaxes130",
+            "mask": "############"
+          }
+        },
+        {
+          "payload": {
+            "label": "140 - Сумма налога, уплаченная в связи с применением патентной системы налогообложения",
+            "model": "patentTaxes140",
+            "mask": "############",
+            "hint": "Данная сумма не должна быть больше суммы налога, исчисленная к уплате"
+          }
+        },
+        {
+          "payload": {
+            "label": "150 - Сумма налога, подлежащая уплате в бюджет",
+            "model": "totalTaxSumToPayInBudget150",
+            "mask": "############",
+            "rules": ["requiredField"],
+            "hint": "Исчисляется вычетом суммы подлежащей возврату из суммы, исчисленной к уплате"
+          }
+        },
+        {
+          "payload": {
+            "label": "160 - Сумма налога, подлежащая возврату из бюджета",
+            "model": "totalTaxReturnSum160",
+            "mask": "############",
+            "rules": ["requiredField"]
+          }
+        }
+      ]
+    }
+  }
+}

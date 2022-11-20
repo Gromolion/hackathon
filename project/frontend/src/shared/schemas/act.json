@@ -1,0 +1,240 @@
+{
+  "model": {
+    "actNumber": "",
+    "actDate": "",
+    "executorCompanyFormat": "",
+    "executorCompanyName": "",
+    "executorINN": "",
+    "executorKPP": "",
+    "executorCompanyLocation": "",
+    "executorCheckingAccount": "",
+    "representativePosition": "",
+    "clientCompanyFormat": "",
+    "clientCompanyName": "",
+    "clientINN": "",
+    "clientKPP": "",
+    "clientCompanyLocation": "",
+    "reason": "",
+    "servicesTable": [{}],
+    "commentary": ""
+  },
+  "steps": {
+    "TITLE": {
+      "type": "INFO",
+      "next": "S1",
+      "title": "Привет от команды CRAB RAVE",
+      "text": "В этом сценарии мы легко и просто заполним акт оказания услуг"
+    },
+    "S1": {
+      "next": "S2",
+      "title": "Данные об акте",
+      "elements": [
+        {
+          "payload": {
+            "model": "actNumber",
+            "label": "Номер договора",
+            "mask": "##",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "model": "actDate",
+            "label": "Дата составления акта",
+            "type": "date",
+            "rules": ["requiredField"]
+          }
+        }
+      ]
+    },
+    "S2": {
+      "next": "S3",
+      "title": "Сведения об исполнителе",
+      "elements": [
+        {
+          "payload": {
+            "model": "executorCompanyFormat",
+            "label": "Формат компании",
+            "hint": "ИП, ООО, АО, ПАО, НКО, ОП",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "model": "executorCompanyName",
+            "label": "Название компании",
+            "rules": ["requiredField"],
+            "tooltip": "Для ИП формат: ИП + ФИО"
+          }
+        },
+        {
+          "payload": {
+            "model": "executorINN",
+            "label": "ИНН",
+            "mask": "############",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "model": "executorKPP",
+            "label": "КПП",
+            "mask": "####XX###",
+            "rules": ["requiredField"],
+            "externalLink": "Узнать КПП по ИНН",
+            "externalLinkURL": "https://egrul.nalog.ru/index.html"
+          }
+        },
+        {
+          "payload": {
+            "model": "executorCompanyLocation",
+            "label": "Месторасположение компании",
+            "type": "textarea",
+            "rules": ["requiredField"],
+            "placeholder": "344003, Ростовская область, г Ростов-На-Дону, ул Города Волос, д. 6",
+            "hint": "Индекс, город, улица, дом"
+          }
+        },
+        {
+          "payload": {
+            "model": "executorCheckingAccount",
+            "label": "Информация о банке",
+            "type": "textarea",
+            "rules": ["requiredField"],
+            "placeholder": "40817810099910004312, Сбербанк, г Ростов-На-Дону, 044525225, 33477718052229426923",
+            "hint": "Расчетный счет, название банка, город банка, БИК банка, корреспондентский счет"
+          }
+        }
+      ]
+    },
+    "S3": {
+      "next": "S4",
+      "title": "Сведения о звказчике",
+      "elements": [
+        {
+          "payload": {
+            "model": "clientCompanyFormat",
+            "label": "Формат компании",
+            "hint": "ИП, ООО, АО, ПАО, НКО, ОП",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "model": "clientCompanyName",
+            "label": "Название компании",
+            "rules": ["requiredField"],
+            "tooltip": "Для ИП формат: ИП + ФИО"
+          }
+        },
+        {
+          "payload": {
+            "model": "clientINN",
+            "label": "ИНН",
+            "mask": "############",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "model": "clientKPP",
+            "label": "КПП",
+            "mask": "####XX###",
+            "rules": ["requiredField"],
+            "externalLink": "Узнать КПП по ИНН",
+            "externalLinkURL": "https://egrul.nalog.ru/index.html"
+          }
+        },
+        {
+          "payload": {
+            "model": "clientCompanyLocation",
+            "label": "Месторасположение компании",
+            "type": "textarea",
+            "rules": ["requiredField"],
+            "placeholder": "344003, Ростовская область, г Ростов-На-Дону, ул Города Волос, д. 6",
+            "hint": "Индекс, город, улица, дом"
+          }
+        }
+      ]
+    },
+    "S4": {
+      "next": "S5",
+      "title": "Основание оказания услуги",
+      "elements": [
+        {
+         "payload": {
+           "model": "reason",
+           "label": "Юридическое основание услуги",
+           "hint": "Наиболее распространенное основание - договор об оказании услуг"
+          }
+        }
+      ]
+    },
+    "S5": {
+      "next": "S6",
+      "title": "Таблица услуг",
+      "elements": [
+        {
+          "type": "GROUP",
+          "payload": {
+            "model": "servicesTable",
+            "min": "1",
+            "elements": [
+              {
+                "model": "serviceName",
+                "label": "Наименование услуги",
+                "rules": ["requiredField"]
+              },
+              {
+                "model": "serviceAmount",
+                "label": "Количество оказываемых услуг",
+                "rules": ["requiredField"]
+              },
+              {
+                "model": "serviceMeasurement",
+                "label": "Единица измерения услуг",
+                "hint": "Наиболее распространены единцы времени(часы, дни) и количество полностью оказанных услуг"
+              },
+              {
+                "model": "servicePrice",
+                "label": "Цена услуги",
+                "mask": "##############",
+                "rules": ["requiredField"],
+                "hint": "Цена указывается в рублях"
+              },
+              {
+                "model": "serviceCost",
+                "label": "Стоимость услуги",
+                "mask": "##############",
+                "rules": ["requiredField"],
+                "hint": "Стоимость указывается в рублях"
+              },
+              {
+                "model": "NDS",
+                "label": "НДС",
+                "mask": "##############",
+                "hint": "Для большинства товаров и услуг – 20%; для продуктов питания, медицинских и детских товаров, книг и журналов – 10%; Экспорт - 0%"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "S6": {
+      "next": "END",
+      "title": "Комментарий к акту",
+      "elements": [
+        {
+          "model": "commentary",
+          "type": "textarea",
+          "rules": ["requiredField"]
+        }
+      ]
+    },
+    "END": {
+      "next": "END",
+      "title": "Скачать файл"
+
+    }
+  }
+}
