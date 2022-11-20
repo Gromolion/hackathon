@@ -20,7 +20,7 @@ import { useRoute } from 'vue-router'
 import { schemas } from 'src/shared/schemas'
 import { useDocumentStore } from 'src/stores/document-store'
 import DefaultStep from 'components/steps/DefaultStep/DefaultStep.vue'
-import EndStep from "components/steps/EndStep/EndStep";
+import EndStep from "components/steps/EndStep/EndStep.vue";
 
 const steps = useStepsStore()
 const document = useDocumentStore()
