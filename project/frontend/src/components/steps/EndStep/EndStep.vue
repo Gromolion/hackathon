@@ -25,7 +25,7 @@ const send = async () => {
   await axios.post(`${process.env.BACKEND}/api/get-file`, {
     docType: route.params.document,
     fileName: steps.selected.filename,
-    fileType: 'pdf',
+    format: steps.selected.format,
     formData: document.model
   })
              .then(() => {

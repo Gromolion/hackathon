@@ -86,20 +86,20 @@
                 @endphp
                 @foreach($formData['servicesTable'] as $row)
                     @php
-                        $sum = $row['serviceAmount'] * $row['servicePrice'] - $row['serviceAmount'] * $row['servicePrice'] * $row['NDS'] / 100;
+                        $sum = ($row['serviceAmount'] ?? 0) * ($row['servicePrice'] ?? 0) - ($row['serviceAmount'] ?? 0) * ($row['servicePrice'] ?? 0) * ($row['NDS'] ?? 0) / 100;
                         $totalSum += $sum;
                     @endphp
                     <TableRow MaxHeight="500" MinHeight="0" Height="15.75" Name="Row2">
                         <TableCell ColSpan="1" RowSpan="1" Name="Cell4" Padding="2, 0, 2, 0" Font="Tahoma, 10pt" Text="{{ $rowNumber - 1 }}"/>
                         <TableCell ColSpan="1" RowSpan="1" Name="Cell5" Padding="2, 0, 2, 0" Font="Tahoma, 10pt" Text="{{ $row['serviceName'] }}"/>
                         <TableCell HorzAlign="Right" ColSpan="1" RowSpan="1" Name="Cell6" Padding="2, 0, 2, 0"
-                                   Font="Tahoma, 10pt" Text="{{ $row['serviceAmount'] }}"/>
+                                   Font="Tahoma, 10pt" Text="{{ $row['serviceAmount'] ?? 0 }}"/>
                         <TableCell HorzAlign="Right" ColSpan="1" RowSpan="1" Name="Cell38" Padding="2, 0, 2, 0"
-                                   Font="Tahoma, 10pt" Text="{{ $row['serviceMeasurement'] }}"/>
+                                   Font="Tahoma, 10pt" Text="{{ $row['serviceMeasurement'] ?? 0 }}"/>
                         <TableCell HorzAlign="Right" ColSpan="1" RowSpan="1" Name="Cell41" Padding="2, 0, 2, 0"
-                                   Font="Tahoma, 10pt" Text="{{ $row['servicePrice'] }}"/>
+                                   Font="Tahoma, 10pt" Text="{{ $row['servicePrice'] ?? 0 }}"/>
                         <TableCell HorzAlign="Right" ColSpan="1" RowSpan="1" Name="Cell44" Padding="2, 0, 2, 0"
-                                   Font="Tahoma, 10pt" Text="{{ $row['NDS'] }}"/>
+                                   Font="Tahoma, 10pt" Text="{{ $row['NDS'] ?? 0 }}"/>
                         <TableCell ColSpan="1" RowSpan="1" Name="Cell42" Padding="2, 0, 2, 0"
                                    Font="Tahoma, 10pt" Text="{{ $sum }}"/>
                     </TableRow>

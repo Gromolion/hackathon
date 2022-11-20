@@ -76,9 +76,6 @@ class FastReportService
             sleep(5);
         }
 
-        header('Allowed-Hosts: *');
-        header('Access-Control-Allow-Origin: *');
-
         return $this->downloadFile($exportFileId);
     }
 
