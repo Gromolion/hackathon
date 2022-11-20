@@ -1,10 +1,20 @@
 const routes = [
   {
     path: '/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/IndexPage.vue')
+      }
+    ]
+  },
+  {
+    path: '/:document',
     component: () => import('layouts/FormLayout.vue'),
     children: [
       {
-        path: ':document',
+        path: '',
         component: () => import('pages/FormPage.vue')
       }
     ]

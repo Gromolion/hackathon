@@ -1,4 +1,7 @@
 {
+  "title": "Заполнение формы 3НДФЛ",
+  "link": "/ndfl",
+  "icon": "description",
   "model": {
     "name": "",
     "patronymic": "",
@@ -26,6 +29,7 @@
     "taxedIncomeSum030": "",
     "taxReturnSum040": "",
     "taxReduceSum050": "",
+    "taxBase060": "",
     "taxBaseSumSecondPoint061": "",
     "taxBaseSumThirdPoint062": "",
     "otherTaxBases063": "",
@@ -37,8 +41,7 @@
     "fixedExpenseSum120": "",
     "foreignTaxes130": "",
     "patentTaxes140": "",
-    "totalTaxSumToPayInBudget150": "",
-    "totalTaxReturnSum160": ""
+    "totalTaxSumToPayInBudget150": ""
   },
   "steps": {
     "TITLE": {
@@ -558,14 +561,6 @@
             "mask": "############",
             "rules": ["requiredField"],
             "hint": "Исчисляется вычетом суммы подлежащей возврату из суммы, исчисленной к уплате"
-          }
-        },
-        {
-          "payload": {
-            "label": "160 - Сумма налога, подлежащая возврату из бюджета",
-            "model": "totalTaxReturnSum160",
-            "mask": "############",
-            "rules": ["requiredField"]
           }
         }
       ]
