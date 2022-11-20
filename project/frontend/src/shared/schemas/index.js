@@ -1,9 +1,9 @@
-import ndfl from './ndfl.json'
+import ndfl from './3-ndfl.json'
 import act from './act.json'
-import convertation from './convertation.json'
+import testSending from './testSending.json'
 
 export const schemas = {
-  ndfl,
+  "3-ndfl": ndfl,
   act,
-  convertation
+  testSending,
 }

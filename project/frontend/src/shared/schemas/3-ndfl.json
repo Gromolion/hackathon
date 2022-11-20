@@ -128,6 +128,13 @@
     "S2": {
       "next": "S2Branch",
       "title": "Сведения о документе, удостоверяющем личность",
+      "asyncHook": {
+        "method": "post",
+        "path": "api/get-inn",
+        "formData": ["lastName", "name", "patronymic", "dateOfBirth", "passport"],
+        "onSuccess": "set('INN', result.data), goto('S2Branch')",
+        "onFail": "goto('S3')"
+      },
       "elements": [
         {
           "payload": {
@@ -161,10 +168,11 @@
     },
     "S2Branch": {
       "type": "BRANCH",
-      "title": "Подставить ИНН",
+      "title": "Мы автоматически определили ИНН. Это он?",
+      "displayProp": "INN",
       "acceptText": "Да",
       "declineText": "Нет",
-      "accept": "goto('S3')",
+      "accept": "goto('S4')",
       "decline": "goto('S3')"
     },
     "S3": {
