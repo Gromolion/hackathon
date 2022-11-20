@@ -62,7 +62,9 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        BACKEND: 'http://localhost:8080'
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,

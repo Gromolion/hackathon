@@ -127,10 +127,10 @@
       "title": "Сведения о документе, удостоверяющем личность",
       "asyncHook": {
         "method": "post",
-        "url": "localhost:8080/inn",
+        "path": "api/get-inn",
         "formData": ["lastName", "name", "patronymic", "dateOfBirth", "passport"],
-        "then": "set('INN', result.data), goto('S2Branch')",
-        "catch": "goto('S3')"
+        "onSuccess": "set('INN', result.data), goto('S2Branch')",
+        "onFail": "goto('S3')"
       },
       "elements": [
         {
