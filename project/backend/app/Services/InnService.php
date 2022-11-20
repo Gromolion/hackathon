@@ -56,6 +56,7 @@ class InnService implements InnServiceInterface
         if (!$requestId) {
             throw new Exception();
         }
+        sleep(3);
 
         return $this->validateInn($requestId);
     }
