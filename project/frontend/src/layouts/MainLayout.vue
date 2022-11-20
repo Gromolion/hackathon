@@ -60,6 +60,11 @@ const linksList = [
     title: schemas['act'].title,
     link: schemas['act'].link,
     icon: schemas['act'].icon
+  },
+  {
+    title: schemas['convertation'].title,
+    link: schemas['convertation'].link,
+    icon: schemas['convertation'].icon
   }
 ]
 

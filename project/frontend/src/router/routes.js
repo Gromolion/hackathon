@@ -16,6 +16,16 @@ const routes = [
       {
         path: '',
         component: () => import('pages/FormPage.vue')
+      },
+    ]
+  },
+  {
+    path: '/convert',
+    component: () => import('layouts/FormLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/ConvertPage.vue')
       }
     ]
   },
