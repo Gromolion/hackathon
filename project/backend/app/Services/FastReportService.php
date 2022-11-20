@@ -66,7 +66,7 @@ class FastReportService
         $templateId =  $this->createTemplate($rootTemplateFolderId, $templateFileContent);
         $exportFileId = $this->exportFile($rootExportFolderId, $templateId);
 
-        sleep(2);
+        sleep(5);
 
         $formattedFile = $this->downloadFile($exportFileId);
         dd($formattedFile);
@@ -119,7 +119,7 @@ class FastReportService
         return $exportFile['id'];
     }
 
-    private function downloadFile(string $fileId)
+    private function downloadFile(string $fileId): string
     {
         $url = str_replace('{id}', $fileId, $this->getFullUrl(self::DOWNLOAD_URL));
 
@@ -129,7 +129,7 @@ class FastReportService
                 'Content-Type' => 'application/json',
                 "Accept" => 'application/json',
             ],
-        ])->getBody()->getContents();
+        ] )->getBody()->getContents();
     }
 
     private function getFullUrl(string $url): string
