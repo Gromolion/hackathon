@@ -50,9 +50,7 @@ const submit = async () => {
     if (payload.some((e) => e === undefined)) {
       throw new Error('Undefined parameters is not allowed, skipping asyncHook')
     }
-    const formData = new FormData();
-    Object.entries(payload).forEach(([k, v]) => formData.set(k, v))
-    await axios[hook.method](`${process.env.BACKEND}/${hook.path}}`, formData)
+    await axios[hook.method](`${process.env.BACKEND}/${hook.path}}`, payload)
       .then((result) => evaluate(`do(${hook.onSuccess})`, {...scope, result}) )
       .catch((error) => {
         console.error(error);
