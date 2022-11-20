@@ -10,18 +10,18 @@ const routes = [
     ]
   },
   {
-    path: '/:document',
+    path: '/go',
     component: () => import('layouts/FormLayout.vue'),
     children: [
       {
-        path: '',
+        path: ':document',
         component: () => import('pages/FormPage.vue')
       },
     ]
   },
   {
     path: '/convert',
-    component: () => import('layouts/FormLayout.vue'),
+    component: () => import('layouts/MainLayout.vue'),
     children: [
       {
         path: '',

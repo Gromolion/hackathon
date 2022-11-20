@@ -28,6 +28,22 @@
         <q-item-label
           header
         >
+          Основное
+        </q-item-label>
+
+        <q-item
+          clickable
+          tag="a"
+          @click="$router.push('/convert')"
+        >
+          <q-item-section>
+            <q-item-label>Конвертация файлов</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item-label
+          header
+        >
           Сценарии заполнения документов
         </q-item-label>
 
@@ -52,20 +68,15 @@ import {schemas} from "src/shared/schemas";
 
 const linksList = [
   {
-    title: schemas['ndfl'].title,
-    link: schemas['ndfl'].link,
-    icon: schemas['ndfl'].icon
+    title: schemas['3-ndfl'].title,
+    link: 'go/3-ndfl',
+    icon: schemas['3-ndfl'].icon
   },
   {
     title: schemas['act'].title,
-    link: schemas['act'].link,
+    link: 'go/act',
     icon: schemas['act'].icon
   },
-  {
-    title: schemas['convertation'].title,
-    link: schemas['convertation'].link,
-    icon: schemas['convertation'].icon
-  }
 ]
 
 export default defineComponent({
