@@ -45,17 +45,9 @@
   "steps": {
     "TITLE": {
       "type": "INFO",
-      "next": "S1Branch",
+      "next": "S2",
       "title": "Привет от команды CRAB RAVE",
       "text": "В этом сценарии мы легко и просто заполним часть формы 3-НДФЛ"
-    },
-    "S1Branch": {
-      "type": "BRANCH",
-      "title": "Выбери",
-      "acceptText": "Орел",
-      "declineText": "Решка",
-      "accept": "set('firstName', 'Иван'), goto('S1')",
-      "decline": "goto('S7')"
     },
     "S1": {
       "next": "S2",
