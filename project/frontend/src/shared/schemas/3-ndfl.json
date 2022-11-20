@@ -1,4 +1,7 @@
 {
+  "title": "Заполнение формы 3НДФЛ",
+  "link": "/ndfl",
+  "icon": "description",
   "model": {
     "name": "",
     "patronymic": "",
@@ -26,6 +29,7 @@
     "taxedIncomeSum030": "",
     "taxReturnSum040": "",
     "taxReduceSum050": "",
+    "taxBase060": "",
     "taxBaseSumSecondPoint061": "",
     "taxBaseSumThirdPoint062": "",
     "otherTaxBases063": "",
@@ -37,8 +41,7 @@
     "fixedExpenseSum120": "",
     "foreignTaxes130": "",
     "patentTaxes140": "",
-    "totalTaxSumToPayInBudget150": "",
-    "totalTaxReturnSum160": ""
+    "totalTaxSumToPayInBudget150": ""
   },
   "steps": {
     "TITLE": {
@@ -127,10 +130,10 @@
       "title": "Сведения о документе, удостоверяющем личность",
       "asyncHook": {
         "method": "post",
-        "url": "localhost:8080/inn",
+        "path": "api/get-inn",
         "formData": ["lastName", "name", "patronymic", "dateOfBirth", "passport"],
-        "then": "set('INN', result.data), goto('S2Branch')",
-        "catch": "goto('S3')"
+        "onSuccess": "set('INN', result.data), goto('S2Branch')",
+        "onFail": "goto('S3')"
       },
       "elements": [
         {
@@ -566,14 +569,6 @@
             "mask": "############",
             "rules": ["requiredField"],
             "hint": "Исчисляется вычетом суммы подлежащей возврату из суммы, исчисленной к уплате"
-          }
-        },
-        {
-          "payload": {
-            "label": "160 - Сумма налога, подлежащая возврату из бюджета",
-            "model": "totalTaxReturnSum160",
-            "mask": "############",
-            "rules": ["requiredField"]
           }
         }
       ]

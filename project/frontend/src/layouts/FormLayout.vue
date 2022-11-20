@@ -21,6 +21,9 @@
       v-model="drawer.opened"
       bordered
     >
+      <q-item @click="$router.push('/')" clickable class="fa-bold text-light-blue">
+         На главную
+      </q-item>
       <q-list>
         <q-item-label
           header
