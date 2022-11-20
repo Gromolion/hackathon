@@ -15,9 +15,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return var_dump(json_decode($service->getLocation()));
 //});
 
-Route::post('/get-file', function (Request $request, FastReportService $service) {
-    $json = json_decode($request->getContent(), true);
-    $service->setDocType($json['docType']);
+Route::get('/get-file', function (Request $request, FastReportService $service) {
+//    $json = json_decode($request->getContent(), true);
+    $service->setDocType('3-ndfl');
 
     $formData = [
         'INN' => '614408168401',
@@ -55,9 +55,20 @@ Route::post('/get-file', function (Request $request, FastReportService $service)
         "codeOKTMO150" => "12345678901",
         "sumAdvancedPayedYear160" => "1234567890112",
         "sumAdvancedDecreaseYear170" => "1234567890112",
+        "incomeCode001" => "12",
+        "incomeSum010" => "12345.56",
+        "totalTaxSumToPay070" => "1234512",
+        "noTaxedIncomeSum020" => "64213.12",
+        "taxedIncomeSum030" => "321523.78",
+        "taxReturnSum040" => "213213.45",
+        "taxReduceSum050" => "15415.67",
+        "taxBase060" => "213124.23",
+        "taxBaseSumSecondPoint061" => "632432.13",
+        "taxBaseSumThirdPoint062" => "214512.67",
+        "otherTaxBases063" => "595984.45",
     ];
 
-    $formData = [
+    $formData1 = [
         "actNumber" => "1",
         "actDate" => "2022-10-10",
         "executorCompanyFormat" => "ООО",
@@ -99,25 +110,24 @@ Route::post('/get-file', function (Request $request, FastReportService $service)
     ];
 
     $service->setFormData($formData);
-    $service->setFormat($json['format']);
-    $service->setFileName($json['fileName']);
+    $service->setFormat('pdf');
+    $service->setFileName('ЯНеАнимечник');
 
     $service->getFileContent();
 });
-Route::get('/test', function (\App\Services\InnService $innService) {
-    $params = [
-        'fam' => 'Смирнов',
-        'nam' => 'Юрий',
-        'otch' => 'Николаевич',
-        'bdate' => '2003-12-09T14:48:00.000Z',
-        'docno' => '6017241956'
-    ];
+Route::get('/get-inn', function (\App\Services\InnService $innService, Request $request) {
+    $params = json_decode($request->getContent(), true);
 
-    $params['bdate'] = date('d.m.Y', strtotime((string)$params['bdate']));
+    $newParams = [];
 
-    $params['docno'] = substr($params['docno'], 0, 2) . " " . substr($params['docno'], 2, 2) . " " . substr($params['docno'], 4, 6);
+    $newParams['fam'] = $params['lastName'];
+    $newParams['nam'] = $params['name'];
+    $newParams['otch'] = $params['patronymic'];
+    $newParams['bdate'] = date('d.m.Y', strtotime((string)$params['birthday']));
 
-    return $innService->getInn($params);
+    $newParams['docno'] = substr($params['passport'], 0, 2) . " " . substr($params['passport'], 2, 9);
+
+    return $innService->getInn($newParams);
 });
 
 
