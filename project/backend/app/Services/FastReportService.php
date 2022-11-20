@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class FastReportService
 {
@@ -24,7 +25,11 @@ class FastReportService
     const GET_ROOT_EXPORT_FOLDER_URL = '/api/rp/v1/Exports/Root';
     const GET_TEMPLATE_CREATE_URL = '/api/rp/v1/Templates/Folder/{id}/File';
     const EXPORT_REPORT_URL = '/api/rp/v1/Templates/File/{id}/Export';
+    const EXPORT_STATUS_URL = '/api/rp/v1/Exports/File/{id}';
     const DOWNLOAD_URL = '/download/e/{id}';
+
+    const STATUS_SUCCESS = 'Success';
+    const STATUS_FAILED = 'Failed';
 
     public function __construct(Client $client)
     {
@@ -66,10 +71,14 @@ class FastReportService
         $templateId =  $this->createTemplate($rootTemplateFolderId, $templateFileContent);
         $exportFileId = $this->exportFile($rootExportFolderId, $templateId);
 
-        sleep(5);
+        while (($status = $this->getExportStatus($exportFileId)) != self::STATUS_SUCCESS) {
+            if ($status == self::STATUS_FAILED) break;
+            sleep(5);
+        }
 
-        $formattedFile = $this->downloadFile($exportFileId);
-        dd($formattedFile);
+        header('Allowed-Hosts: *');
+
+        return $this->downloadFile($exportFileId);
     }
 
     private function getApiKeyEncoded(string $apiKey): string
@@ -115,8 +124,17 @@ class FastReportService
             "pagesCount" => 10,
             "format" => $this->format
         ]));
-
+        dd($exportFile);
         return $exportFile['id'];
+    }
+
+    private function getExportStatus(string $exportId)
+    {
+        $url = str_replace('{id}', $exportId, self::EXPORT_STATUS_URL);
+
+        $exportFile = $this->sendRequest(self::METHOD_GET, $this->getFullUrl($url));
+
+        return $exportFile['status'];
     }
 
     private function downloadFile(string $fileId): string
