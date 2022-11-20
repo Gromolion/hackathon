@@ -1,121 +1,99 @@
 {
   "model": {
-    "root": [],
-    "firstName": [],
-    "middleName": "",
+    "name": "",
+    "patronymic": "",
     "lastName": "",
-    "countryCode": 643,
-    "taxpayerCode": 720,
+    "countryCode": "643",
+    "codeCategoryTaxpayer": "720",
     "birthDate": "",
     "phoneNumber": "",
-    "documentCode": 0,
+    "codeDocumentType": "21",
     "passport": "",
-    "taxpayerStatusCode": 0,
+    "codeStatusTaxpayer": "",
     "INN": "",
-    "confirmatorStatus": 0,
-    "confirmatorFullName": "",
-    "currentDate": "",
-    "confirmatorDocument": "",
-    "excludePayment2-227": [
-     {
-       "classificationCode": "",
-       "OKTMOCode": 0,
-       "taxPayment": 0,
-       "taxReturn": 0
-     }
-    ],
+    "presentTaxpayer": "1",
+    "presentTaxpayerLastName": "1",
+    "presentTaxpayerName": "",
+    "presentTaxpayerPatronymic": "",
+    "presentTaxpayerDocumentName": "",
+    "presentTaxpayerDocumentRequisites": "",
+    "excludePayment2-227": [{}],
+    "payment2-227": [{}],
+    "incomeCode001": "03",
+    "incomeSum010": "",
     "classificationCode": "",
-    "OKTMOCodeFirstQuarter": 0,
-    "expensePaymentFirstQuarter": 0,
-    "OKTMOCodeTwoQuarters": 0,
-    "expensePaymentTwoQuarters": 0,
-    "expenseReduceTwoQuarters": 0,
-    "OKTMOCodeThreeQuarters": 0,
-    "expensePaymentThreeQuarters": 0,
-    "expenseReduceThreeQuarters": 0,
-    "OKTMOCodeFullYear": 0,
-    "expensePaymentFullYear": 0,
-    "expenseReduceFullYear": 0,
-    "incomeCode": 0,
-    "incomeSum": 0,
-    "noTaxedIncomeSum": 0,
-    "taxedIncomeSum": 0,
-    "taxReturnSum": 0,
-    "taxReduceSum": 0,
-    "taxBase": 0,
-    "taxBaseSumSecondPoint": 0,
-    "taxBaseSumThirdPoint": 0,
-    "otherTaxBases": 0,
-    "totalTaxSumToPay": 0,
-    "holdTaxesSum": 0,
-    "holdTaxesSumThirdPoint": 0,
-    "holdTaxesSumMaterial": 0,
-    "payedSalesTax": 0,
-    "fixedExpenseSum": 0,
-    "foreignTaxes": 0,
-    "patentTaxes": 0,
-    "totalTaxSumToPayInBudget": 0,
-    "totalTaxReturnSum": 0
+    "noTaxedIncomeSum020": "",
+    "taxedIncomeSum030": "",
+    "taxReturnSum040": "",
+    "taxReduceSum050": "",
+    "taxBaseSumSecondPoint061": "",
+    "taxBaseSumThirdPoint062": "",
+    "otherTaxBases063": "",
+    "totalTaxSumToPay070": "",
+    "holdTaxesSum080": "",
+    "holdTaxesSumThirdPoint081": "",
+    "holdTaxesSumMaterial090": "",
+    "payedSalesTax100": "",
+    "fixedExpenseSum120": "",
+    "foreignTaxes130": "",
+    "patentTaxes140": "",
+    "totalTaxSumToPayInBudget150": "",
+    "totalTaxReturnSum160": ""
   },
   "steps": {
     "TITLE": {
       "type": "INFO",
-      "next": "S1",
+      "next": "S1Branch",
       "title": "Привет от команды CRAB RAVE",
       "text": "В этом сценарии мы легко и просто заполним часть формы 3-НДФЛ"
+    },
+    "S1Branch": {
+      "type": "BRANCH",
+      "title": "Выбери",
+      "acceptText": "Орел",
+      "declineText": "Решка",
+      "accept": "set('firstName', 'Иван'), goto('S1')",
+      "decline": "goto('S7')"
     },
     "S1": {
       "next": "S2",
       "title": "Сведения о налогоплательщике",
       "elements": [
         {
-          "type": "GROUP",
           "payload": {
-            "model": "root",
-            "min": 1,
-            "elements": [
-              {
-                "label": "поле1",
-                "model": "f1",
-                "required": true
-              },
-              {
-                "label": "поле2",
-                "model": "f2",
-                "required": true
-              }
-            ]
+            "label": "Имя",
+            "model": "name",
+            "rules": ["requiredField"]
           }
         },
         {
-          "type": "MULTIPLE",
           "payload": {
-            "min": 2,
-            "max": 4,
             "label": "Отчество",
-            "model": "middleName",
+            "model": "patronymic",
             "hint": "Можно пропустить, если отчества нет"
           }
         },
         {
           "payload": {
-            "required": true,
             "label": "Фамилия",
-            "model": "lastName"
+            "model": "lastName",
+            "rules": ["requiredField"]
           }
         },
         {
           "payload": {
             "label": "Дата рождения",
             "model": "birthDate",
-            "type": "date"
+            "type": "date",
+            "rules": ["requiredField"]
           }
         },
         {
           "payload":  {
             "label": "Номер контактного телефона",
             "model": "phoneNumber",
-            "mask": "+# (###) ###-##-##"
+            "mask": "+# (###) ###-##-##",
+            "rules": ["requiredField"]
           }
         },
         {
@@ -123,688 +101,472 @@
             "externalLink": "Список кодов стран",
             "externalLinkURL": "http://www.consultant.ru/document/cons_doc_LAW_283419/a2da79b1a48d13cf4e64f78e2670d3f77c0a35e6/",
             "model": "countryCode",
-            "type": "number",
             "mask": "###",
             "label": "Код страны налогоплательщика",
             "placeholder": "000",
-            "hint": "Укажите 643, если вы гражданин РФ"
+            "hint": "Укажите 643, если вы гражданин РФ",
+            "rules": ["requiredField"]
           }
         },
         {
           "payload": {
             "externalLink": "Как указать код категории налогоплательщика?",
             "externalLinkURL": "https://www.nalogia.ru/articles/268-kakoy-stavit-kod-kategorii-nalogoplatelshchika-v-deklaratsii-3-ndfl.php#:~:text=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C-,%D0%A7%D1%82%D0%BE%20%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82%20%D0%BA%D0%BE%D0%B4%20%D0%BA%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D0%B8%20%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%B0,%D0%9D%D0%94%D0%A4%D0%9B%20%D0%B8%20%D1%81%20%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9%20%D1%86%D0%B5%D0%BB%D1%8C%D1%8E",
-            "model": "taxpayerCode",
-            "type": "number",
+            "model": "codeCategoryTaxpayer",
             "mask": "###",
             "label": "Код категории налогоплательщика",
             "placeholder": "000",
-            "hint": "770 для фермеров, 720 для ИП"
+            "hint": "770 для фермеров, 720 для ИП",
+            "rules": ["requiredField"]
           }
         }
       ]
     },
     "S2": {
+      "next": "S2Branch",
       "title": "Сведения о документе, удостоверяющем личность",
-      "multiple": false,
-      "inputs": [{
-        "tooltip": "Код документа",
-        "model": "passport",
-        "type": "number",
-        "validation": "numberValidation",
-        "validationOptions": [2],
-        "mask": "code",
-        "required": true,
-        "optional": "false",
-        "title": "Код вида документа",
-        "nullState": "",
-        "placeholder": "00",
-        "invalidState": "Некорректный код",
-        "validState": "Корректный код"
-      },
-      {
-        "tooltip": "Серия и номер паспорта",
-        "model": "documentCode",
-        "type": "string",
-        "validation": "passportValidation",
-        "validationOptions": null,
-        "mask": "passport",
-        "required": true,
-        "title": "Серия и номер",
-        "nullState": "",
-        "placeholder": "0000 000000",
-        "invalidState": "Некорректные серия и номер",
-        "validState": "Корректный серия и номер"
-      },
-      {
-        "tooltip": "1 - налоговый резидент Российской Федерации,\n2 - лицо, не являющееся налоговым резидентом Российской Федерации",
-        "model": "taxpayerStatusCode",
-        "type": "number",
-        "validation": "statusValidation",
-        "validationOptions": ["1,2"],
-        "mask": "status",
-        "required": true,
-        "title": "Серия и номер",
-        "nullState": "",
-        "placeholder": "0",
-        "invalidState": "Некорректный статус",
-        "validState": "Корректный статус"
-      }
+      "elements": [
+        {
+          "payload": {
+            "label": "Код вида документа",
+            "model": "codeDocumentType",
+            "mask": "##",
+            "hint": "Код паспорта - 21",
+            "externalLink": "Список всех кодов документов",
+            "externalLinkURL": "https://glavkniga.ru/situations/k501126",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Серия и номер",
+            "model" : "passport",
+            "mask": "#### ######",
+            "rules": ["requiredField"]
+          }
+        },
+        {
+          "payload": {
+            "label": "Код статуса налогоплательщика",
+            "model": "codeStatusTaxpayer",
+            "mask": "#",
+            "hint": "1 - налоговый резидент Российской Федерации; 2 - лицо, не являющееся налоговым резидентом Российской Федерации",
+            "rules": ["requiredField"]
+          }
+        }
       ]
     },
+    "S2Branch": {
+      "type": "BRANCH",
+      "title": "Подставить ИНН",
+      "acceptText": "Да",
+      "declineText": "Нет",
+      "accept": "goto('S3')",
+      "decline": "goto('S3')"
+    },
     "S3": {
-      "component": "INN",
-      "title": "ИНН",
-      "multiple": false,
-      "input": [
-      {
-        "tooltip": "Идентификационный номер налогоплательщика",
-        "model": "INN",
-        "type": "string",
-        "validation": "INNValidation",
-        "validationOptions": null,
-        "mask": "INN",
-        "required": true,
-        "title": "ИНН",
-        "nullState": "",
-        "placeholder": "",
-        "invalidState": "Некорректный ИНН",
-        "validState": "Корректный ИНН"
-      }
+      "next": "S4",
+      "title": "Идентификационный номер налогоплательщика",
+      "elements": [
+        {
+          "payload": {
+            "label": "ИНН",
+            "model": "INN",
+            "mask": "############",
+            "rules": ["requiredField"]
+          }
+        }
       ]
     },
     "S4": {
-      "component": "Confirmation",
-      "title": "Достоверность и полноту сведений, указанных\nв настоящей декларации, подтверждаю:",
-      "multiple": false,
-      "inputs": [
+      "next": "S5",
+      "title": "Достоверность и полноту сведений, указанных в настоящей декларации, подтверждаю:",
+      "elements": [
         {
-          "tooltip": "1 - налогоплательщик\n2 - представитель налогоплательщика",
-          "model": "confirmatorStatus",
-          "type": "number",
-          "validation": "statusValidation",
-          "validationOptions": ["1,2"],
-          "mask": "status",
-          "required": true,
-          "title": "Кто подтверждает достоверность сведений",
-          "nullState": "",
-          "placeholder": "0",
-          "invalidState": "Некорректный статус",
-          "validState": "Корректный статус"
+          "payload": {
+            "label": "Кто подтверждает достоверность сведений",
+            "model": "presentTaxpayer",
+            "mask": "#",
+            "hint": "1 - налогоплательщик; 2 - представитель налогоплательщика",
+            "rules": ["requiredField"]
+          }
         },
         {
-          "tooltip": "Фамилия, имя, отчество* представителя налогоплательщика",
-          "model": "confirmatorFullName",
-          "type": "string",
-          "validation": "fullNameValidation",
-          "validationOptions": null,
-          "mask": "fullName",
-          "required": true,
-          "title": "ФИО подтверждающего",
-          "nullState": "",
-          "placeholder": "Имя Фамилия Отчество",
-          "invalidState": "Некорректные данные",
-          "validState": "Корректный данные"
+          "payload": {
+            "label": "Фамилия представителя налогоплательщика",
+            "model": "presentTaxpayerLastName",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "rules": ["requiredField"]
+          }
         },
         {
-          "tooltip": "Текущая дата",
-          "model": "currentDate",
-          "type": "string",
-          "validation": "dateValidation",
-          "validationOptions": null,
-          "mask": "date",
-          "required": true,
-          "title": "Дата",
-          "nullState": "",
-          "placeholder": "00-00-00",
-          "invalidState": "Некорректная дата",
-          "validState": "Корректная дата"
+          "payload": {
+            "label": "Имя представителя налогоплательщика",
+            "model": "presentTaxpayerName",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "rules": ["requiredField"]
+          }
         },
         {
-          "tooltip": "Паспорт, СНИЛС...",
-          "model": "confirmatorFullName",
-          "type": "string",
-          "validation": "documentValidation",
-          "validationOptions": null,
-          "mask": "document",
-          "required": true,
-          "title": "Наименование и реквизиты документа,\nподтверждающего полномочия представителя налогоплательщика",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректный документ",
-          "validState": "Корректный документ"
+          "payload": {
+            "label": "Отчество представителя налогоплательщика",
+            "model": "presentTaxpayerPatronymic",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "hint": "Можно пропустить, если отчества нет"
+          }
+        },
+        {
+          "payload": {
+            "label": "Наименование документа,",
+            "model": "presentTaxpayerDocumentName",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "hint": "подтверждающего полномочия представителя налогоплательщика"
+          }
+        },
+        {
+          "payload": {
+            "label": "Реквизиты документа,",
+            "model": "presentTaxpayerDocumentRequisites",
+            "mask": "SSSSSSSSSSSSSSSSSSSS",
+            "hint": "подтверждающего полномочия представителя налогоплательщика"
+          }
         }
       ]
     },
     "S5": {
-      "component": "excludePayment2-227",
-      "title": "Сведения о суммах налога, подлежащих уплате (доплате) в бюджет (за исключением сумм налога, уплачиваемого в\nсоответствии с пунктом 7 статьи 227 Налогового кодекса Российской Федерации)/возврату из бюджета",
-      "multiple":true,
-      "inputs": [
+      "next": "S6",
+      "title": "Сведения о суммах налога, подлежащих уплате в бюджет (за исключением сумм налога, уплачиваемого в соответствии с пунктом 7 статьи 227 НК РФ)",
+      "elements": [
         {
-          "tooltip": "Узнать код можно по ссылке: https://www.nalog.gov.ru/rn77/taxation/kbk/",
-          "model": "classificationCode",
-          "type": "string",
-          "validation": "classificationValidation",
-          "validationOptions": null,
-          "mask": "classification",
-          "required": true,
-          "title": "Код бюджетной классификации",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
-        },
-        {
-          "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "model": "OKTMOCode",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [11],
-          "mask": "OKTMOCode",
-          "required": true,
-          "title": "Код по ОКТМО",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
-        },
-        {
-          "tooltip": "Доходы, подлежащие налогообложению по ставке 30% x 0.3 + налог с доходов,  в  отношении  которых  в  соответствии с международным законодательством применяются особые налоговые ставки",
-          "model": "taxPayment",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [14],
-          "mask": "payment",
-          "required": true,
-          "title": "Сумма налога, подлежащая уплате (доплате) в бюджет (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
-        },
-        {
-          "tooltip": "Из суммы удержанного и уплаченного авансом налога вычтите сумму доходов, подлжещих уплате в бюджет. Если получившиеся значения оказалось отрицательным или равным нулю, оставьте поле пустым",
-          "model": "taxReturn",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [14],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма налога, подлежащая возврату из бюджета (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+        "type": "GROUP",
+        "payload": {
+          "model": "excludePayment2-227",
+          "min": 1,
+          "elements": [
+            {
+             "label": "020 - Код бюджетной классификации",
+             "model": "codeBudgetClassification020",
+             "externalLink": "Узнать код",
+             "externalLinkURL": "https://www.nalog.gov.ru/rn77/taxation/kbk/",
+             "mask": "################",
+             "rules": ["requiredField"]
+            },
+            {
+              "label": "030 - Код по ОКТМО",
+              "model": "codeOKTMO030",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "040 - Сумма налога, подлежащая уплате в бюджет",
+              "model": "sumTaxesForPayToBudget040",
+              "mask": "#############",
+              "hint": "Формула расчета",
+              "tooltip": "Доходы, подлежащие налогообложению по ставке 30% x 0.3 + налог с доходов, в  отношении  которых применяются особые налоговые ставки",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "050 - Сумма налога, подлежащая возврату из бюджета",
+              "model": "sumTaxesForReturnFromBudget050",
+              "mask": "#############",
+              "hint": "Формула расчета",
+              "tooltip": "Из суммы удержанного и уплаченного авансом налога вычтите сумму доходов, подлжещих уплате в бюджет. Если получившиеся значения оказалось отрицательным или равным нулю, оставьте поле пустым"
+            }
+          ]
+        }
         }
       ]
     },
     "S6": {
-      "component": "Payment2-227",
-      "title": "Сведения о суммах налога (авансового платежа по налогу), уплачиваемого в соответствии с пунктом 7 статьи 227\nНалогового кодекса Российской Федерации/возврату из бюджета",
-      "multiple": false,
-      "inputs": [
-        {
-          "tooltip": "Узнать код можно по ссылке: https://www.nalog.gov.ru/rn77/taxation/kbk/",
-          "model": "classificationCode",
-          "type": "string",
-          "validation": "classificationValidation",
-          "validationOptions": null,
-          "mask": "classification",
-          "required": true,
-          "title": "Код бюджетной классификации",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
-        },
-        {
-          "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "model": "OKTMOCodeFirstQuarter",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [11],
-          "mask": "OKTMOCode",
-          "required": false,
-          "title": "Код по ОКТМО",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
-        },
-        {
-          "tooltip": "Чтобы узнать авансовый платеж, который надо уплатить, вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
-          "model": "expensePaymentFirstQuarter",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма авансового платежа к уплате за первый квартал (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
-        },
-        {
-          "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "model": "OKTMOCodeTwoQuarters",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [11],
-          "mask": "OKTMOCode",
-          "required": false,
-          "title": "Код по ОКТМО",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
-        },
-        {
-          "tooltip": "Чтобы узнать авансовый платеж, который надо уплатить, вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
-          "model": "expensePaymentTwoQuarters",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма авансового платежа к уплате за полугодие (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
-        },
-        {
-          "tooltip": "Сумма, которая была уплачена за предыдущий отчетный период этого года. Если такого платежа не было, оставьте поле пустым",
-          "model": "expenseReduceTwoQuarters",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма авансового платежа к уменьшению за полугодие (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
-        },
-        {
-          "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "model": "OKTMOCodeThreeQuarters",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [11],
-          "mask": "OKTMOCode",
-          "required": false,
-          "title": "Код по ОКТМО",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
-        },
-        {
-          "tooltip": "Чтобы узнать авансовый платеж, который надо уплатить, вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
-          "model": "expensePaymentThreeQuarters",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма авансового платежа к уплате за девять месяцев (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
-        },
-        {
-          "tooltip": "Сумма, которая была уплачена за предыдущий отчетный период этого года. Если такого платежа не было, оставьте поле пустым",
-          "model": "expenseReduceThreeQuarters",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма авансового платежа к уменьшению за девять месяцев (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
-        },
-        {
-          "tooltip": "Узнать код можно по ссылке: https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
-          "model": "OKTMOCodeFullYear",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [11],
-          "mask": "OKTMOCode",
-          "required": false,
-          "title": "Код по ОКТМО",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
-        },
-        {
-          "tooltip": "Чтобы узнать авансовый платеж, который надо уплатить, вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
-          "model": "expensePaymentFullYear",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма налога, подлежащая доплате за налоговый период (календарный год) (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
-        },
-        {
-          "tooltip": "Сумма, которая была уплачена за предыдущий отчетный период этого года. Если такого платежа не было, оставьте поле пустым",
-          "model": "expenseReduceFullYear",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма налога к уменьшению за налоговый период (календарный год) (руб.)",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+      "next": "S7",
+      "title": "Сведения о суммах налога (авансового платежа по налогу), уплачиваемого в соответствии с пунктом 7 статьи 227 НК РФ",
+      "elements": [{
+        "type": "GROUP",
+        "payload": {
+          "model": "payment2-227",
+          "min": 1,
+          "elements": [
+            {
+              "label": "060 - Код бюджетной классификации",
+              "model": "codeBudgetClassification060",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.nalog.gov.ru/rn77/taxation/kbk/",
+              "mask": "################",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "070 - Код по ОКТМО",
+              "model": "codeOKTMO070",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "080 - Сумма авансового платежа к уплате за первый квартал",
+              "model": "sumAdvancedPaymentFirstQuarter080",
+              "hint": "Формула расчета авансового платежа",
+              "tooltip": "Вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
+              "mask": "#############",
+              "rules": ["requiredField"]
+            },
+            {
+              "label": "090 - Код по ОКТМО",
+              "model": "codeOKTMO90",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########"
+            },
+            {
+              "label": "100 - Сумма авансового платежа к уплате за полугодие",
+              "model": "sumAdvancedPaymentHalfYear100",
+              "hint": "Формула расчета авансового платежа",
+              "tooltip": "Вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
+              "mask": "#############"
+            },
+            {
+              "label": "110 - Сумма авансового платежа к уменьшению за полугодие",
+              "model": "sumAdvancedDecreaseHalfYear110",
+              "hint": "Сумма, уплаченная за предыдущий отчетный период этого года.",
+              "tooltip": "Если такого платежа не было, оставьте поле пустым",
+              "mask": "#############"
+            },
+            {
+              "label": "120 - Код по ОКТМО",
+              "model": "codeOKTMO120",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########"
+            },
+            {
+              "label": "130 - Сумма авансового платежа к уплате за девять месяцев",
+              "model": "sumAdvancedPayedNineMonth130",
+              "hint": "Формула расчета авансового платежа",
+              "tooltip": "Вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
+              "mask": "#############"
+            },
+            {
+              "label": "140 - Сумма авансового платежа к уменьшению за девять месяцев",
+              "model": "sumAdvancedDecreaseNineMonth140",
+              "hint": "Сумма, уплаченная за предыдущий отчетный период этого года.",
+              "tooltip": "Если такого платежа не было, оставьте поле пустым",
+              "mask": "#############"
+            },
+            {
+              "label": "150 - Код по ОКТМО",
+              "model": "codeOKTMO150",
+              "externalLink": "Узнать код",
+              "externalLinkURL": "https://www.b-kontur.ru/profi/oktmo-po-inn-ili-ogrn",
+              "mask": "###########"
+            },
+            {
+              "label": "160 - Сумма авансового платежа к уплате за календарный год",
+              "model": "sumAdvancedPayedYear160",
+              "hint": "Формула расчета авансового платежа",
+              "tooltip": "Вычтите из доходов за отчетный период расходы за тот же период и умножьте на ставку налога",
+              "mask": "#############"
+            },
+            {
+              "label": "170 - Сумма авансового платежа к уменьшению за календарный год",
+              "model": "sumAdvancedDecreaseYear170",
+              "hint": "Сумма, уплаченная за предыдущий отчетный период этого года.",
+              "tooltip": "Если такого платежа не было, оставьте поле пустым",
+              "mask": "#############"
+            }
+          ]
         }
+      }
       ]
     },
     "S7": {
-      "component": "TaxBase",
-      "title": "Расчет налоговой базы (руб. коп.)",
-      "multiple": false,
-      "inputs": [
+      "next": "S8",
+      "title": "Расчет налоговой базы",
+      "elements": [
         {
-          "tooltip": "Код вида дохода можно узнать по ссылке: https://www.nalogia.ru/articles/185-kody-vida-dokhoda-v-3-ndfl.php#:~:text=%D0%9A%D0%BE%D0%B4%20%D0%B2%D0%B8%D0%B4%D0%B0%20%D0%B4%D0%BE%D1%85%D0%BE%D0%B4%D0%B0%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5,%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8)%20%D0%B4%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D0%B8%203%2D%D0%9D%D0%94%D0%A4%D0%9B.",
-          "model": "incomeCode",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [3],
-          "mask": "none",
-          "required": true,
-          "title": "Код вида дохода",
-          "nullState": "",
-          "placeholder": "000",
-          "invalidState": "Некорректный код",
-          "validState": "Корректный код"
+          "payload": {
+            "label": "001 - Код вида дохода",
+            "model": "incomeCode001",
+            "mask": "##",
+            "hint": "03 - код дохода облагаемого налогом по ставке 13% или 15%",
+            "externalLink": "Узнать код",
+            "externalLinkURL": "https://www.nalogia.ru/articles/185-kody-vida-dokhoda-v-3-ndfl.php#:~:text=%D0%9A%D0%BE%D0%B4%20%D0%B2%D0%B8%D0%B4%D0%B0%20%D0%B4%D0%BE%D1%85%D0%BE%D0%B4%D0%B0%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5,%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8)%20%D0%B4%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D0%B8%203%2D%D0%9D%D0%94%D0%A4%D0%9B"
+          }
         },
         {
-          "tooltip": "Ваши доходы за отчетный период",
-          "model": "incomeSum",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15],
-          "mask": "floatNumber",
-          "required": true,
-          "title": "Сумма доходов",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "010 - Сумма доходов",
+            "model": "incomeSum010",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Ваши доходы за отчетный период",
+            "maxLength": 16
+          }
         },
         {
-          "tooltip": "Не может быть больше 4000 за вид дохода",
-          "model": "noTaxedIncomeSum",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15, 4000],
-          "mask": "floatNumber",
-          "required": true,
-          "title": "Сумма доходов, не подлежащих налогообложению",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "020 - Сумма доходов, не подлежащих налогообложению",
+            "model": "noTaxedIncomeSum020",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Не может быть больше 4000 за вид дохода",
+            "maxLength": 16
+          }
         },
         {
-          "tooltip": "Сумма доходов минус сумма доходов не облагаемых налогом",
-          "model": "taxedIncomeSum",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15],
-          "mask": "floatNumber",
-          "required": true,
-          "title": "Сумма доходов, подлежащих налогообложению",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "030 - Сумма доходов, подлежащих налогообложению",
+            "model": "taxedIncomeSum030",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Сумма доходов минус сумма доходов не облагаемых налогом",
+            "maxLength": 16
+          }
         },
         {
-          "tooltip": "Налоговый вычет полагается для физических лиц с годовым доходом до 350000 рублей. Список стандартных налоговых вычетов - https://www.nalog.gov.ru/rn77/taxation/taxes/ndfl/nalog_vichet/standart_nv/",
-          "model": "taxReturnSum",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15],
-          "mask": "floatNumber",
-          "required": false,
-          "title": "Сумма налоговых вычетов",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "040 - Сумма налоговых вычетов",
+            "model": "taxReturnSum040",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Налоговый вычет полагается для физических лиц с годовым доходом до 350000 рублей",
+            "externalLink": "Список стандартных налоговых вычетов",
+            "externalLinkURL": "https://www.nalog.gov.ru/rn77/taxation/taxes/ndfl/nalog_vichet/standart_nv/",
+            "maxLength": 16
+          }
         },
         {
-          "tooltip": "Сумма расходов, принимаемая в уменьшение полученных доходов, определяется путем указания суммы расходов (убытков) по совокупности операций с ценными бумагами и производными финансовыми инструментами",
-          "model": "taxReduceSum",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15],
-          "mask": "floatNumber",
-          "required": false,
-          "title": "Сумма расходов, принимаемых в уменьшение полученных доходов",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "050 - Сумма расходов, принимаемых в уменьшение полученных доходов",
+            "model": "taxReduceSum050",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Определяется путем указания суммы расходов по совокупности операций с ценными бумагами и производными финансовыми инструментами",
+            "maxLength": 16
+          }
         },
         {
-          "tooltip": "Сумма, с которой рассчитывается подоходный налог",
-          "model": "taxBase",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15],
-          "mask": "floatNumber",
-          "required": false,
-          "title": "Налоговая база для исчисления налога",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "060 - Налоговая база для исчисления налога",
+            "model": "taxBase060",
+            "rules": ["requiredField","floatSum","fixedLength"],
+            "hint": "Сумма, с которой рассчитывается подоходный налог",
+            "maxLength": 16
+          }
         },
         {
-          "tooltip": "Сумма, с которой рассчитывается подоходный налог c ставкой 13% (если Ваш суммарный годовой доход равен или менее 5 миллионнам рублей)",
-          "model": "taxBaseSumSecondPoint",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15],
-          "mask": "floatNumber",
-          "required": false,
-          "title": "Сумма налоговой базы для исчисления налога по ставке, предусмотренной абзацем вторым пункта 1 или абзацем вторым пункта 3.1 статьи 224 Налогового кодекса Российской Федерации",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "061 - Сумма налоговой базы для исчисления налога по ставке 13%",
+            "model": "taxBaseSumSecondPoint061",
+            "rules": ["floatSum","fixedLength"],
+            "hint": "Сумма налоговой базы по статье 224.3.1 НК РФ (второй абзац)",
+            "tooltip": "Для граждан с суммарным годовым доходом меньше или равным 5 миллионнам рублей",
+            "maxLength": 16
+          }
         },
         {
-          "tooltip": "Сумма, с которой рассчитывается подоходный налог c ставкой 15% (если Ваш суммарный годовой доход больше 5 миллионнам рублей)",
-          "model": "taxBaseSumThirdPoint",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15],
-          "mask": "floatNumber",
-          "required": false,
-          "title": "Сумма налоговой базы для исчисления налога по ставке, предусмотренной абзацем третьим пункта 1 или абзацем третьим пункта 3.1 статьи 224 Налогового кодекса Российской Федерации",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "062 - Сумма налоговой базы для исчисления налога по ставке 15%",
+            "model": "taxBaseSumThirdPoint062",
+            "rules": ["floatSum","fixedLength"],
+            "hint": "Сумма налоговой базы по статье 224.3.1 НК РФ (третий абзац)",
+            "tooltip": "Для граждан с суммарным годовым доходом больше 5 миллионнов рублей",
+            "maxLength": 16
+          }
         },
         {
-          "tooltip": "Заполняется только в отношении кодов вида дохода с \"17\" по \"25\"",
-          "model": "otherTaxBases",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [15],
-          "mask": "floatNumber",
-          "required": false,
-          "title": "Сумма иных налоговых баз",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "063 - Сумма иных налоговых баз",
+            "model": "otherTaxBases063",
+            "rules": ["floatSum","fixedLength"],
+            "hint": "Заполняется только в отношении кодов вида дохода с \"17\" по \"25\"",
+            "maxLength": 16
+          }
         }
       ]
     },
     "S8": {
-      "component": "TaxToPay",
-      "title": "Расчет суммы налога, подлежащей уплате (доплате) / возврату (руб.)",
-      "multiple": false,
-      "inputs": [
+      "next": "S9",
+      "title": "Расчет налоговой базы",
+      "elements": [
         {
-          "tooltip": "Определяется путем умножения налоговой базы, на соответствующую налоговую ставку (в процентах)",
-          "model": "totalTaxSumToPay",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": true,
-          "title": "Сумма налога, исчисленная к уплате",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "070 - Сумма налога, исчисленная к уплате",
+            "model": "totalTaxSumToPay070",
+            "mask": "############",
+            "rules": ["requiredField"],
+            "hint": "Определяется путем умножения налоговой базы, на соответствующую налоговую ставку (в процентах)"
+          }
         },
         {
-          "tooltip": "Налог на доход физического лица, который был удержан с Вашего дохода.",
-          "model": "holdTaxesSum",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": true,
-          "title": "Сумма налога, удержанная у источника выплаты",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "080 - Сумма налога, удержанная у источника выплаты",
+            "model": "holdTaxesSum080",
+            "mask": "############",
+            "rules": ["requiredField"],
+            "hint": "Налог на доход физического лица, который был удержан с Вашего дохода"
+          }
         },
         {
-          "tooltip": "Налог на доход физического лица по ставке 15%(если Ваш годовой доход выше 5 миллионов рублей), который был удержан с Вашего дохода.",
-          "model": "holdTaxesSumThirdPoint",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма налога, удержанная у источника выплаты по ставке, предусмотренной абзацем третьим пункта 1 или абзацем третьим пункта 3.1 статьи 224 Налогового кодекса Российской Федерации",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "081 - Сумма налога, удержанная по ставке 15%",
+            "model": "holdTaxesSumThirdPoint081",
+            "mask": "############",
+            "hint": "Сумма налога, удержанная у источника выплаты по статье 224.3.1 НК РФ (третий абзац)",
+            "tooltip": "Для граждан с суммарным годовым доходом больше 5 миллионнов рублей"
+          }
         },
         {
-          "tooltip": "Особые случаи (например, выгода полученная с заемных средств)",
-          "model": "holdTaxesSumMaterial",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма налога, удержанная c доходов в виде материальной выгоды",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "090 - Сумма налога, удержанная c доходов в виде материальной выгоды",
+            "model": "holdTaxesSumMaterial090",
+            "mask": "############",
+            "hint": "Особые случаи (например, выгода полученная с заемных средств)"
+          }
         },
         {
-          "tooltip": "Сумма уплаченная по торговому сбору, которая зачитывается для уменьшения налоговой базы.",
-          "model": "payedSalesTax",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма торгового сбора, уплаченная в налоговом периоде, подлежащая зачету",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "100 - Сумма торгового сбора, уплаченная в налоговом периоде, подлежащая зачету",
+            "model": "payedSalesTax100",
+            "mask": "############"
+          }
         },
         {
-          "tooltip": "Заполняют иностранные граждане, осуществляющие трудовую деятельность по найму у физических лиц для личных, домашних и иных подобных нужд, не связанных с осуществлением предпринимательской деятельности",
-          "model": "fixedExpenseSum",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма фиксированных авансовых платежей, уплаченная налогоплательщиком, или сумма налога на прибыль организаций, подлежащие зачету",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "120 - Сумма фиксированных авансовых платежей или сумма налога на прибыль организаций",
+            "model": "fixedExpenseSum120",
+            "mask": "############",
+            "hint": "Заполняют иностранные граждане, осуществляющие трудовую деятельность по найму",
+            "tooltip": "Учитывается найм на физических лиц, для нужд не связанных с осуществлением предпринимательской деятельности"
+          }
         },
         {
-          "tooltip": "Сумма налога, уплаченная в иностранных государствах и подлежащая зачету",
-          "model": "foreignTaxes",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма налога, уплаченная в иностранных государствах, подлежащая зачету в Российской Федерации",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "130 - Сумма налога, уплаченная в иностранных государствах, подлежащая зачету в РФ",
+            "model": "foreignTaxes130",
+            "mask": "############"
+          }
         },
         {
-          "tooltip": "Данная сумма не должна быть больше суммы налога, исчисленная к уплате",
-          "model": "patentTaxes",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": false,
-          "title": "Сумма налога, уплаченная в связи с применением патентной системы налогообложения, подлежащая зачету",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "140 - Сумма налога, уплаченная в связи с применением патентной системы налогообложения",
+            "model": "patentTaxes140",
+            "mask": "############",
+            "hint": "Данная сумма не должна быть больше суммы налога, исчисленная к уплате"
+          }
         },
         {
-          "tooltip": "Общая сумма уплаты в бюджет. Исчисляется вычетом суммы подлежащей возврату из суммы, исчисленной к уплате",
-          "model": "totalTaxSumToPayInBudget",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": true,
-          "title": "Сумма налога, подлежащая уплате (доплате) в бюджет",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "150 - Сумма налога, подлежащая уплате в бюджет",
+            "model": "totalTaxSumToPayInBudget150",
+            "mask": "############",
+            "rules": ["requiredField"],
+            "hint": "Исчисляется вычетом суммы подлежащей возврату из суммы, исчисленной к уплате"
+          }
         },
         {
-          "tooltip": "Общая сумма к возврату из бюджета",
-          "model": "totalTaxReturnSum",
-          "type": "number",
-          "validation": "numberValidation",
-          "validationOptions": [13],
-          "mask": "payment",
-          "required": true,
-          "title": "Сумма налога, подлежащая возврату из бюджета",
-          "nullState": "",
-          "placeholder": "",
-          "invalidState": "Некорректная сумма",
-          "validState": "Корректная сумма"
+          "payload": {
+            "label": "160 - Сумма налога, подлежащая возврату из бюджета",
+            "model": "totalTaxReturnSum160",
+            "mask": "############",
+            "rules": ["requiredField"]
+          }
         }
       ]
     }

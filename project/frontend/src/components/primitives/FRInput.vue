@@ -6,7 +6,7 @@
     v-bind="omit(['hint'], props)"
     :stack-label="stackLabel || type === 'date'"
     v-model="modelProvider"
-    :rules="required ? [(v) => !!v || 'Поле обязательно для заполнения'] : []"
+    :rules="rules ? rules.map((rule) => ruleMap[rule]) : []"
   >
     <template
       v-slot:hint
@@ -36,7 +36,7 @@
         size="xs"
         tag="div"
         name="open_in_new"
-        @click="open"
+        @click="openLink(externalLinkURL)"
       >
         <q-tooltip>
           {{ externalLink }}
@@ -53,13 +53,27 @@ import { computed, ref } from 'vue'
 
 const emit = defineEmits(['update:modelValue']);
 
-const inputRef = ref(null)
+const inputRef = ref(null);
 
 emitter.on('answer', () => {
   if (inputRef.value) {
     inputRef.value.validate()
   }
 })
+
+const ruleMap = {
+  requiredField: (value) =>  !!value || 'Поле обязательно для заполнения',
+  floatSum: (value) => {
+    if(!value){
+      return true
+    }
+    if(value.includes('.')){
+      return value.split('.')[1].length === 2 || 'Укажите копейки корректно'
+    }
+    return 'Разделите сумму точкой'
+  },
+  fixedLength: (value) => value.length < props.maxLength || 'Слишком большое значение'
+}
 
 const props = defineProps({
   label: String,
@@ -73,7 +87,13 @@ const props = defineProps({
   placeholder: String,
   stackLabel: Boolean,
   required: Boolean,
+  rules: [String],
+  maxLength: Number
 })
+
+function openLink(externalLinkURL){
+  open(externalLinkURL)
+}
 
 const modelProvider = computed({
   get() {
