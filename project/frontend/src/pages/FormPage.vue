@@ -4,6 +4,7 @@
       <template v-if="steps.selected">
         <InfoStep v-if="steps.selected.type === 'INFO'" />
         <BranchStep v-else-if="steps.selected.type === 'BRANCH'" />
+        <EndStep v-else-if="steps.selected.type === 'END'" />
         <DefaultStep v-else/>
       </template>
     </q-card>
@@ -19,6 +20,7 @@ import { useRoute } from 'vue-router'
 import { schemas } from 'src/shared/schemas'
 import { useDocumentStore } from 'src/stores/document-store'
 import DefaultStep from 'components/steps/DefaultStep/DefaultStep.vue'
+import EndStep from "components/steps/EndStep/EndStep";
 
 const steps = useStepsStore()
 const document = useDocumentStore()
